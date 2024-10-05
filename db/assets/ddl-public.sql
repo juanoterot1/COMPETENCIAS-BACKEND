@@ -1,58 +1,88 @@
-CREATE TABLE tenants (
-    tenant_id SERIAL PRIMARY KEY,
-    tenant_name VARCHAR(255) NOT NULL,
-    schema_name VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE faculties (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
 );
 
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR NOT NULL UNIQUE,
-    password VARCHAR NOT NULL,
-    full_name VARCHAR NOT NULL,
-    mail VARCHAR NOT NULL UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE subjects (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR,
+    code VARCHAR,
+    id_faculty INTEGER,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (id_faculty) REFERENCES faculties(id)
 );
 
 CREATE TABLE evaluations (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL,
+    id INTEGER PRIMARY KEY,
+    name VARCHAR,
     description VARCHAR,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE groups (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id_subject INTEGER,
+    id_faculty INTEGER,
+    id_user INTEGER,
+    status VARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (id_subject) REFERENCES subjects(id),
+    FOREIGN KEY (id_faculty) REFERENCES faculties(id),
+    FOREIGN KEY (id_user) REFERENCES users(id)
 );
 
 CREATE TABLE questions (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR NOT NULL,
+    id INTEGER PRIMARY KEY,
+    name VARCHAR,
     value FLOAT,
-    id_group INTEGER NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
-    id_evaluation INTEGER NOT NULL REFERENCES evaluations(id) ON DELETE CASCADE
+    id_evaluation INTEGER,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (id_evaluation) REFERENCES evaluations(id)
 );
 
-CREATE TABLE answers_detail (
-    id SERIAL PRIMARY KEY,
-    company VARCHAR NOT NULL,
-    delegation VARCHAR NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    dni VARCHAR NOT NULL,
-    id_evaluation INTEGER NOT NULL REFERENCES evaluations(id) ON DELETE CASCADE,
-    id_question INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE,
-    qualification VARCHAR
+CREATE TABLE answers (
+    id INTEGER PRIMARY KEY,
+    answer_description VARCHAR,
+    id_evaluation INTEGER,
+    id_question INTEGER,
+    id_user INTEGER,
+    score FLOAT,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (id_evaluation) REFERENCES evaluations(id),
+    FOREIGN KEY (id_question) REFERENCES questions(id),
+    FOREIGN KEY (id_user) REFERENCES users(id)
 );
 
-CREATE TABLE answers_scores (
-    id SERIAL PRIMARY KEY,
-    company VARCHAR NOT NULL,
-    delegation VARCHAR NOT NULL,
-    dni VARCHAR NOT NULL,
-    id_evaluation INTEGER NOT NULL REFERENCES evaluations(id) ON DELETE CASCADE,
-    id_user INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    total_qualification VARCHAR,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY,
+    username VARCHAR,
+    password VARCHAR,
+    full_name VARCHAR,
+    phone VARCHAR,
+    mail VARCHAR,
+    id_role INTEGER,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (id_role) REFERENCES roles(id)
+);
+
+CREATE TABLE roles (
+    id INTEGER PRIMARY KEY,
+    role_name VARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+CREATE TABLE grading_matrix (
+    id INTEGER PRIMARY KEY,
+    id_subject INTEGER,
+    total_evaluations INTEGER,
+    total_score FLOAT,
+    recommendation VARCHAR,
+    score FLOAT,
+    document VARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (id_subject) REFERENCES subjects(id)
 );
