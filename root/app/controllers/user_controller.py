@@ -22,6 +22,7 @@ def create_user(user_service: UserService):
             "full_name": "John Doe",
             "mail": "example@mail.com",
             "dni": "12345678",
+            "role_id": 1,
             "created_at": "2024-09-28T12:34:56",
             "performed_by": "admin"
         }
@@ -37,6 +38,7 @@ def create_user(user_service: UserService):
             full_name=data.get('full_name'),
             mail=data.get('mail'),
             dni=data.get('dni'),
+            role_id=data.get('role_id'),  # Asignando role_id
             created_at=data.get('created_at'),
             performed_by=data.get('performed_by')
         )
@@ -88,6 +90,7 @@ def get_users(user_service: UserService):
         full_name (str): Filter by full name.
         mail (str): Filter by email.
         dni (str): Filter by dni.
+        role_id (int): Filter by role ID.
 
     Returns:
         Response: JSON response with paginated users or error message.
@@ -99,10 +102,11 @@ def get_users(user_service: UserService):
         full_name = request.args.get('full_name', type=str)
         mail = request.args.get('mail', type=str)
         dni = request.args.get('dni', type=str)
+        role_id = request.args.get('role_id', type=int)
 
-        logger.info(f"Fetching users with filters - page: {page}, per_page: {per_page}, username: {username}, full_name: {full_name}, mail: {mail}, dni: {dni}")
+        logger.info(f"Fetching users with filters - page: {page}, per_page: {per_page}, username: {username}, full_name: {full_name}, mail: {mail}, dni: {dni}, role_id: {role_id}")
         
-        users, total = user_service.get_users_paginated(page, per_page, username, full_name, mail, dni)
+        users, total = user_service.get_users_paginated(page, per_page, username, full_name, mail, dni, role_id)
 
         # Calcular si hay páginas siguientes y anteriores
         has_next = (page * per_page) < total
@@ -139,6 +143,7 @@ def update_user(user_id, user_service: UserService):
             "full_name": "New Full Name",
             "mail": "newemail@mail.com",
             "dni": "87654321",
+            "role_id": 2,
             "performed_by": "admin"
         }
     """
@@ -154,6 +159,7 @@ def update_user(user_id, user_service: UserService):
             full_name=data.get('full_name'),
             mail=data.get('mail'),
             dni=data.get('dni'),
+            role_id=data.get('role_id'),  # Incluyendo role_id
             performed_by=data.get('performed_by')
         )
 

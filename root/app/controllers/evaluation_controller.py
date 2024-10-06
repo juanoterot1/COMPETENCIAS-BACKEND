@@ -24,7 +24,10 @@ def create_evaluation(evaluation_service: EvaluationService):
             id=data.get('id'),
             name=data.get('name'),
             description=data.get('description'),
-            performed_by=data.get('performed_by')
+            id_subject=data.get('id_subject'),  # Cambiado para coincidir con el modelo
+            id_faculty=data.get('id_faculty'),  # Cambiado para coincidir con el modelo
+            id_user=data.get('id_user'),  # Cambiado de performed_by a id_user
+            status=data.get('status')
         )
 
         return ApiResponse.created(result=new_evaluation.as_dict())
@@ -35,6 +38,7 @@ def create_evaluation(evaluation_service: EvaluationService):
     except Exception as e:
         logger.error(f"Error creating evaluation: {e}")
         return ApiResponse.internal_server_error()
+
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['GET'])
 @inject
@@ -100,7 +104,9 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
             evaluation_id=evaluation_id,
             name=data.get('name'),
             description=data.get('description'),
-            performed_by=data.get('performed_by')
+            id_subject=data.get('id_subject'),  # Asegúrate de incluir id_subject si es necesario
+            id_faculty=data.get('id_faculty'),  # Asegúrate de incluir id_faculty si es necesario
+            id_user=data.get('id_user')  # Cambiado de performed_by a id_user
         )
 
         if not updated_evaluation:
@@ -117,6 +123,7 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
     except Exception as e:
         logger.error(f"Error updating evaluation: {e}")
         return ApiResponse.internal_server_error()
+
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['DELETE'])
 @inject

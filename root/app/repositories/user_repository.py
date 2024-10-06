@@ -5,7 +5,7 @@ from app.models.user import User
 class UserRepository:
 
     @staticmethod
-    def create_user(username, password, full_name, mail, dni, created_at=None):
+    def create_user(username, password, full_name, mail, dni, role_id, created_at=None):
         """
         Creates a new user in the database.
         
@@ -15,6 +15,7 @@ class UserRepository:
             full_name (str): The full name of the user.
             mail (str): The email of the user.
             dni (str): The DNI of the user.
+            role_id (int): The ID of the role to associate with the user.
             created_at (datetime, optional): The creation date. If not provided, it will use the current time.
         
         Returns:
@@ -26,7 +27,8 @@ class UserRepository:
                 password=password,
                 full_name=full_name,
                 mail=mail,
-                dni=dni,  # Incluyendo dni
+                dni=dni,
+                role_id=role_id,  # Agregar role_id al crear usuario
                 created_at=created_at
             )
             db.session.add(new_user)
@@ -53,7 +55,7 @@ class UserRepository:
             raise e
 
     @staticmethod
-    def get_users_paginated(page, per_page, username=None, full_name=None, mail=None, dni=None):
+    def get_users_paginated(page, per_page, username=None, full_name=None, mail=None, dni=None, role_id=None):
         """
         Retrieves a paginated list of users with optional filters.
         
@@ -64,6 +66,7 @@ class UserRepository:
             full_name (str, optional): Filter by full name.
             mail (str, optional): Filter by email.
             dni (str, optional): Filter by DNI.
+            role_id (int, optional): Filter by role ID.
         
         Returns:
             Pagination: A Pagination object containing the users and pagination info.
@@ -78,14 +81,16 @@ class UserRepository:
             if mail:
                 query = query.filter(User.mail.ilike(f"%{mail}%"))
             if dni:
-                query = query.filter(User.dni.ilike(f"%{dni}%"))  # Filtrando por dni
+                query = query.filter(User.dni.ilike(f"%{dni}%"))
+            if role_id:
+                query = query.filter(User.role_id == role_id)  # Filtrar por role_id
             
             return query.paginate(page=page, per_page=per_page, error_out=False)
         except SQLAlchemyError as e:
             raise e
 
     @staticmethod
-    def update_user(user_id, username=None, password=None, full_name=None, mail=None, dni=None):
+    def update_user(user_id, username=None, password=None, full_name=None, mail=None, dni=None, role_id=None):
         """
         Updates an existing user.
         
@@ -96,6 +101,7 @@ class UserRepository:
             full_name (str, optional): New full name.
             mail (str, optional): New email.
             dni (str, optional): New DNI.
+            role_id (int, optional): New role ID.
         
         Returns:
             User or None: The updated user object if found, otherwise None.
@@ -114,7 +120,9 @@ class UserRepository:
             if mail:
                 user.mail = mail
             if dni:
-                user.dni = dni  # Actualizar dni
+                user.dni = dni
+            if role_id:
+                user.role_id = role_id  # Actualizar role_id
 
             db.session.commit()
             return user

@@ -13,14 +13,23 @@ class EvaluationService:
         self.evaluation_repository = evaluation_repository
         self.usage_log_service = usage_log_service
 
-    def create_evaluation(self, id, name, description=None, performed_by=None):
+    def create_evaluation(self, id, name, description=None, id_user=None, id_subject=None, id_faculty=None, status=None):
         try:
             logger.info(f"Creating a new evaluation with ID: {id} and name: {name}")
-            new_evaluation = self.evaluation_repository.create_evaluation(id=id, name=name, description=description)
+            # Asegúrate de pasar todos los parámetros necesarios, incluido id_user, id_subject, id_faculty
+            new_evaluation = self.evaluation_repository.create_evaluation(
+                id=id,
+                name=name,
+                description=description,
+                id_subject=id_subject,
+                id_faculty=id_faculty,
+                id_user=id_user,  # id_user en lugar de performed_by
+                status=status
+            )
 
             self.usage_log_service.create_usage_log(
                 action=f"Created evaluation with ID {id} and name {name}",
-                performed_by=performed_by
+                performed_by=id_user  # Registro del usuario que creó la evaluación
             )
 
             return new_evaluation
@@ -28,7 +37,7 @@ class EvaluationService:
             logger.error(f"Error creating evaluation: {e}")
             raise InternalServerError("An internal error occurred while creating the evaluation.")
 
-    def get_evaluation_by_id(self, evaluation_id, performed_by=None):
+    def get_evaluation_by_id(self, evaluation_id, id_user=None):
         try:
             logger.info(f"Fetching evaluation with ID: {evaluation_id}")
             evaluation = self.evaluation_repository.get_evaluation_by_id(evaluation_id)
@@ -39,7 +48,7 @@ class EvaluationService:
 
             self.usage_log_service.create_usage_log(
                 action=f"Fetched evaluation with ID {evaluation_id}",
-                performed_by=performed_by
+                performed_by=id_user  # Registro del usuario que realizó la consulta
             )
 
             return evaluation
@@ -63,10 +72,19 @@ class EvaluationService:
             logger.error(f"Error fetching paginated evaluations: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated evaluations.")
 
-    def update_evaluation(self, evaluation_id, name=None, description=None, performed_by=None):
+    def update_evaluation(self, evaluation_id, name=None, description=None, id_user=None, id_subject=None, id_faculty=None, status=None):
         try:
             logger.info(f"Updating evaluation with ID: {evaluation_id}")
-            updated_evaluation = self.evaluation_repository.update_evaluation(evaluation_id, name=name, description=description)
+            # Asegúrate de pasar todos los parámetros necesarios, incluido id_user
+            updated_evaluation = self.evaluation_repository.update_evaluation(
+                evaluation_id=evaluation_id,
+                name=name,
+                description=description,
+                id_subject=id_subject,
+                id_faculty=id_faculty,
+                id_user=id_user,  # id_user en lugar de performed_by
+                status=status
+            )
 
             if not updated_evaluation:
                 logger.info(f"Evaluation with ID {evaluation_id} not found.")
@@ -74,7 +92,7 @@ class EvaluationService:
 
             self.usage_log_service.create_usage_log(
                 action=f"Updated evaluation with ID {evaluation_id}",
-                performed_by=performed_by
+                performed_by=id_user  # Registro del usuario que realizó la actualización
             )
 
             return updated_evaluation
@@ -85,7 +103,7 @@ class EvaluationService:
             logger.error(f"Error updating evaluation with ID {evaluation_id}: {e}")
             raise InternalServerError("An internal error occurred while updating the evaluation.")
 
-    def delete_evaluation(self, evaluation_id, performed_by=None):
+    def delete_evaluation(self, evaluation_id, id_user=None):
         try:
             logger.info(f"Deleting evaluation with ID: {evaluation_id}")
             result = self.evaluation_repository.delete_evaluation(evaluation_id)
@@ -96,7 +114,7 @@ class EvaluationService:
 
             self.usage_log_service.create_usage_log(
                 action=f"Deleted evaluation with ID {evaluation_id}",
-                performed_by=performed_by
+                performed_by=id_user  # Registro del usuario que eliminó la evaluación
             )
 
             return result
