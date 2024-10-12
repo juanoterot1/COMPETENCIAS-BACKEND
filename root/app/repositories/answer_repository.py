@@ -1,6 +1,6 @@
 from sqlalchemy.exc import SQLAlchemyError
 from app.extensions import db
-from app.models.answer import Answer
+from app.models.answers import Answer
 
 class AnswerRepository:
 

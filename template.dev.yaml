@@ -15,7 +15,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: wsgi.lambda_handler
-      Runtime: python3.10  # Cambiado a python3.10
+      Runtime: python3.11
       CodeUri: root
       Timeout: 30
       Layers:

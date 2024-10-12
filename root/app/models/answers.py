@@ -1,7 +1,7 @@
 from datetime import datetime
 from app import db
 from models.evaluation import Evaluation
-from models.question import Question
+from models.questions import Question
 from models.user import User
 
 class Answer(db.Model):

@@ -1,6 +1,6 @@
 from datetime import datetime
 from app import db
-from models.role import Role  # Importar el modelo Role
+from models.roles import Role  # Importar el modelo Role
 
 class User(db.Model):
     __tablename__ = 'users'

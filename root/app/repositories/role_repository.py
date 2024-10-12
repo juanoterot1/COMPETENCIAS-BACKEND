@@ -1,6 +1,6 @@
 from sqlalchemy.exc import SQLAlchemyError
 from app.extensions import db
-from app.models.role import Role
+from app.models.roles import Role
 
 class RoleRepository:
 
