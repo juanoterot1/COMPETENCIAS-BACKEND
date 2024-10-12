@@ -41,12 +41,16 @@ class AnswerRepository:
         """
         try:
             query = Answer.query
-            
+
             # Filtrar por evaluación si está presente
             if id_evaluation:
                 query = query.filter(Answer.id_evaluation == id_evaluation)
-            
-            return query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Usar paginate de SQLAlchemy
+            paginated_answers = query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Devolver los items y el total de la paginación
+            return paginated_answers.items, paginated_answers.total
         except SQLAlchemyError as e:
             raise e
 

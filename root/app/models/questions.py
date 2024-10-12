@@ -1,6 +1,5 @@
 from datetime import datetime
 from app import db
-from models.evaluation import Evaluation  
 
 class Question(db.Model):
     __tablename__ = 'questions'

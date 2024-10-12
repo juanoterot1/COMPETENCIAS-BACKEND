@@ -1,6 +1,5 @@
 from datetime import datetime
 from app import db
-from models.faculties import Faculty
 
 class Subject(db.Model):
     __tablename__ = 'subjects'

@@ -1,8 +1,5 @@
 from datetime import datetime
 from app import db
-from models.faculties import Faculty
-from models.subjects import Subject
-from models.user import User
 
 class Evaluation(db.Model):
     __tablename__ = 'evaluations'

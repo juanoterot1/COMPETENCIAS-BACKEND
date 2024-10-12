@@ -1,6 +1,5 @@
 from datetime import datetime
 from app import db
-from models.subjects import Subject
 
 class GradingMatrix(db.Model):
     __tablename__ = 'grading_matrix'
