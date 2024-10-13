@@ -31,16 +31,20 @@ class FacultyRepository:
     @staticmethod
     def get_faculties_paginated(page, per_page, name=None):
         """
-        Devuelve una lista paginada de facultades, con filtros opcionales por nombre.
+        Devuelve una lista paginada de facultades, con un filtro opcional por nombre.
         """
         try:
             query = Faculty.query
-            
+
             # Filtrar por nombre si está presente
             if name:
                 query = query.filter(Faculty.name.ilike(f"%{name}%"))
-            
-            return query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Usar paginate de SQLAlchemy
+            paginated_faculties = query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Devolver los items y el total de la paginación
+            return paginated_faculties.items, paginated_faculties.total
         except SQLAlchemyError as e:
             raise e
 
@@ -54,6 +58,7 @@ class FacultyRepository:
             if faculty is None:
                 return None
 
+            # Actualizar los campos proporcionados
             if name:
                 faculty.name = name
 

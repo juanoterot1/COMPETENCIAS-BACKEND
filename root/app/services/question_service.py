@@ -55,7 +55,10 @@ class QuestionService:
             logger.info(f"Fetching questions with filters - page: {page}, per_page: {per_page}, name: {name}")
             questions, total = self.question_repository.get_questions_paginated(page, per_page, name)
 
-            return questions, total
+            # Convertir las preguntas a diccionario si es necesario
+            questions_as_dict = [question.as_dict() for question in questions]
+
+            return questions_as_dict, total
         except Exception as e:
             logger.error(f"Error fetching paginated questions: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated questions.")

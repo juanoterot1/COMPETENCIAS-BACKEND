@@ -44,7 +44,11 @@ class SubjectRepository:
             if code:
                 query = query.filter(Subject.code.ilike(f"%{code}%"))
             
-            return query.paginate(page=page, per_page=per_page, error_out=False)
+            # Usar paginate de SQLAlchemy
+            paginated_subjects = query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Devolver los items y el total de la paginación
+            return paginated_subjects.items, paginated_subjects.total
         except SQLAlchemyError as e:
             raise e
 

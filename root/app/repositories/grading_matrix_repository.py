@@ -42,12 +42,16 @@ class GradingMatrixRepository:
         """
         try:
             query = GradingMatrix.query
-            
-            # Filtrar por subject si está presente
+
+            # Filtrar por id_subject si está presente
             if id_subject:
                 query = query.filter(GradingMatrix.id_subject == id_subject)
-            
-            return query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Usar paginate de SQLAlchemy
+            paginated_grading_matrices = query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Devolver los items y el total de la paginación
+            return paginated_grading_matrices.items, paginated_grading_matrices.total
         except SQLAlchemyError as e:
             raise e
 

@@ -39,8 +39,12 @@ class RoleRepository:
             # Filtrar por nombre de rol si está presente
             if role_name:
                 query = query.filter(Role.role_name.ilike(f"%{role_name}%"))
-            
-            return query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Usar paginate de SQLAlchemy
+            paginated_roles = query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Devolver los items y el total de la paginación
+            return paginated_roles.items, paginated_roles.total
         except SQLAlchemyError as e:
             raise e
 

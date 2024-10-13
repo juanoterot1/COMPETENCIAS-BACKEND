@@ -55,7 +55,10 @@ class RoleService:
             logger.info(f"Fetching roles with filters - page: {page}, per_page: {per_page}, role_name: {role_name}")
             roles, total = self.role_repository.get_roles_paginated(page, per_page, role_name)
 
-            return roles, total
+            # Convertir los roles a diccionario si es necesario
+            roles_as_dict = [role.as_dict() for role in roles]
+
+            return roles_as_dict, total
         except Exception as e:
             logger.error(f"Error fetching paginated roles: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated roles.")

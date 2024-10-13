@@ -40,7 +40,11 @@ class QuestionRepository:
             if name:
                 query = query.filter(Question.name.ilike(f"%{name}%"))
             
-            return query.paginate(page=page, per_page=per_page, error_out=False)
+            # Usar paginate de SQLAlchemy
+            paginated_questions = query.paginate(page=page, per_page=per_page, error_out=False)
+
+            # Devolver los items y el total de la paginación
+            return paginated_questions.items, paginated_questions.total
         except SQLAlchemyError as e:
             raise e
 

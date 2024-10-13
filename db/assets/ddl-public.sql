@@ -12,7 +12,8 @@ CREATE TABLE users (
     full_name VARCHAR,
     phone VARCHAR,
     mail VARCHAR,
-    id_role INTEGER,
+    role_id INTEGER,
+    dni VARCHAR,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
     FOREIGN KEY (id_role) REFERENCES roles(id)

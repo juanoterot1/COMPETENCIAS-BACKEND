@@ -11,7 +11,7 @@ class User(db.Model):
     mail = db.Column(db.String, nullable=False, unique=True)
     dni = db.Column(db.String, nullable=False, unique=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
     # Clave foránea que referencia a la tabla roles
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
     
@@ -36,7 +36,8 @@ class User(db.Model):
             "mail": self.mail,
             "dni": self.dni,
             "role_id": self.role_id,  # Incluir el rol en la salida
-            "created_at": self.created_at
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
         }
 
     def __repr__(self):

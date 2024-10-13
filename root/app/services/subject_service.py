@@ -55,7 +55,10 @@ class SubjectService:
             logger.info(f"Fetching subjects with filters - page: {page}, per_page: {per_page}, name: {name}, code: {code}")
             subjects, total = self.subject_repository.get_subjects_paginated(page, per_page, name, code)
 
-            return subjects, total
+            # Convertir los subjects a diccionario si es necesario
+            subjects_as_dict = [subject.as_dict() for subject in subjects]
+
+            return subjects_as_dict, total
         except Exception as e:
             logger.error(f"Error fetching paginated subjects: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated subjects.")
@@ -63,7 +66,12 @@ class SubjectService:
     def update_subject(self, subject_id, name=None, code=None, id_faculty=None, id_user=None):
         try:
             logger.info(f"Updating subject with ID: {subject_id}")
-            updated_subject = self.subject_repository.update_subject(subject_id, name=name, code=code, id_faculty=id_faculty)
+            updated_subject = self.subject_repository.update_subject(
+                subject_id=subject_id,
+                name=name,
+                code=code,
+                id_faculty=id_faculty
+            )
 
             if not updated_subject:
                 logger.info(f"Subject with ID {subject_id} not found.")

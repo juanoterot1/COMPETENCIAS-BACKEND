@@ -55,7 +55,10 @@ class FacultyService:
             logger.info(f"Fetching faculties with filters - page: {page}, per_page: {per_page}, name: {name}")
             faculties, total = self.faculty_repository.get_faculties_paginated(page, per_page, name)
 
-            return faculties, total
+            # Convertir los objetos Faculty a diccionarios
+            faculties_as_dict = [faculty.as_dict() for faculty in faculties]
+
+            return faculties_as_dict, total
         except Exception as e:
             logger.error(f"Error fetching paginated faculties: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated faculties.")

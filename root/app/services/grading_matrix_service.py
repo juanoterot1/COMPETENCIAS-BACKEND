@@ -62,7 +62,10 @@ class GradingMatrixService:
             logger.info(f"Fetching grading matrices with filters - page: {page}, per_page: {per_page}, id_subject: {id_subject}")
             grading_matrices, total = self.grading_matrix_repository.get_grading_matrices_paginated(page, per_page, id_subject)
 
-            return grading_matrices, total
+            # Convertir los objetos GradingMatrix a diccionarios
+            grading_matrices_as_dict = [grading_matrix.as_dict() for grading_matrix in grading_matrices]
+
+            return grading_matrices_as_dict, total
         except Exception as e:
             logger.error(f"Error fetching paginated grading matrices: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated grading matrices.")
