@@ -17,8 +17,6 @@ def create_evaluation(evaluation_service: EvaluationService):
         if not data:
             raise BadRequest("Request body must be provided")
 
-        if 'id' not in data or not data['id']:
-            raise BadRequest("ID must be provided and cannot be null")
 
         new_evaluation = evaluation_service.create_evaluation(
             id=data.get('id'),

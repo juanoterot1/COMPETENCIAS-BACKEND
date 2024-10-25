@@ -4,7 +4,7 @@ from app import db
 class Evaluation(db.Model):
     __tablename__ = 'evaluations'
     
-    id = db.Column(db.Integer, primary_key=True, autoincrement=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=True)
     id_subject = db.Column(db.Integer, db.ForeignKey('subjects.id'), nullable=False)
@@ -20,7 +20,6 @@ class Evaluation(db.Model):
     user = db.relationship('User', backref='evaluations', lazy=True)  # Suponiendo que el modelo User existe
 
     def __init__(self, id, name, description=None, id_subject=None, id_faculty=None, id_user=None, status=None):
-        self.id = id  # Acepta el id como argumento
         self.name = name
         self.description = description
         self.id_subject = id_subject
