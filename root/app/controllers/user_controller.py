@@ -1,8 +1,10 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_injector import inject
-from werkzeug.exceptions import BadRequest, NotFound
+from werkzeug.exceptions import BadRequest, NotFound, InternalServerError
+from werkzeug.security import check_password_hash
 from app.services.user_service import UserService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_utils import create_jwt_token  # Función para crear el token JWT
 import logging
 
 logger = logging.getLogger(__name__)
@@ -201,4 +203,36 @@ def delete_user(user_id, user_service: UserService):
         return ApiResponse.not_found(resource="User", resource_id=user_id)
     except Exception as e:
         logger.error(f"Error deleting user with ID {user_id}: {e}")
+        return ApiResponse.internal_server_error()
+
+@user_bp.route('/login', methods=['POST'])
+@inject
+def login(user_service: UserService):
+    """
+    Endpoint para autenticar al usuario.
+    Espera un JSON con 'username' y 'password'.
+    """
+    try:
+        data = request.get_json()
+        username = data.get('username')
+        password = data.get('password')
+
+        if not username or not password:
+            raise BadRequest("Username and password are required")
+
+        # Buscar el usuario por nombre de usuario
+        user = user_service.get_user_by_username(username)  # Implementa esta función en el servicio
+
+        # Verificar las credenciales
+        if user and check_password_hash(user.password, password):
+            token = create_jwt_token({"user_id": user.id, "username": user.username})
+            return jsonify({"token": token}), 200
+        else:
+            return jsonify({"error": "Invalid credentials"}), 401
+
+    except BadRequest as e:
+        logger.error(f"Bad request: {e}")
+        return ApiResponse.bad_request(message=str(e))
+    except Exception as e:
+        logger.error(f"Error in login: {e}")
         return ApiResponse.internal_server_error()
