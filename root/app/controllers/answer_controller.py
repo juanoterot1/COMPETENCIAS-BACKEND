@@ -60,10 +60,11 @@ def get_answers(answer_service: AnswerService):
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 10, type=int)
         id_evaluation = request.args.get('id_evaluation', type=int)
+        id_question = request.args.get('id_question', type=int)  # Nuevo parámetro opcional
 
-        logger.info(f"Fetching answers with filters - page: {page}, per_page: {per_page}, id_evaluation: {id_evaluation}")
+        logger.info(f"Fetching answers with filters - page: {page}, per_page: {per_page}, id_evaluation: {id_evaluation}, id_question: {id_question}")
         
-        answers, total = answer_service.get_answers_paginated(page, per_page, id_evaluation)
+        answers, total = answer_service.get_answers_paginated(page, per_page, id_evaluation, id_question)
 
         has_next = (page * per_page) < total
         has_prev = page > 1
@@ -83,6 +84,7 @@ def get_answers(answer_service: AnswerService):
     except Exception as e:
         logger.error(f"An error occurred while fetching paginated answers: {e}")
         return ApiResponse.internal_server_error()
+
 
 @answer_bp.route('/answers/<int:answer_id>', methods=['PUT'])
 @inject

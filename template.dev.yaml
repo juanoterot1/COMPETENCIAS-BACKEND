@@ -22,7 +22,6 @@ Resources:
         - Ref: TestLayer
       Environment:
         Variables:
-          #DATABASE_URL: postgresql+psycopg2://user:password@host/db
           DATABASE_URL: postgresql+psycopg2://root:toor@competencias-db/competencias
       Events:
         Api:

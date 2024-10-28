@@ -56,10 +56,10 @@ class AnswerService:
             logger.error(f"Error fetching answer by ID {answer_id}: {e}")
             raise InternalServerError("An internal error occurred while fetching the answer.")
 
-    def get_answers_paginated(self, page, per_page, id_evaluation=None):
+    def get_answers_paginated(self, page, per_page, id_evaluation=None, id_question=None):
         try:
-            logger.info(f"Fetching answers with filters - page: {page}, per_page: {per_page}, id_evaluation: {id_evaluation}")
-            answers, total = self.answer_repository.get_answers_paginated(page, per_page, id_evaluation)
+            logger.info(f"Fetching answers with filters - page: {page}, per_page: {per_page}, id_evaluation: {id_evaluation}, id_question: {id_question}")
+            answers, total = self.answer_repository.get_answers_paginated(page, per_page, id_evaluation, id_question)
 
             # Convertir los objetos Answer a diccionarios
             answers_as_dict = [answer.as_dict() for answer in answers]
@@ -68,7 +68,6 @@ class AnswerService:
         except Exception as e:
             logger.error(f"Error fetching paginated answers: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated answers.")
-
 
 
     def update_answer(self, answer_id, answer_description=None, score=None, id_user=None):

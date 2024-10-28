@@ -35,9 +35,9 @@ class AnswerRepository:
             raise e
 
     @staticmethod
-    def get_answers_paginated(page, per_page, id_evaluation=None):
+    def get_answers_paginated(page, per_page, id_evaluation=None, id_question=None):
         """
-        Devuelve una lista paginada de respuestas, con un filtro opcional por evaluación.
+        Devuelve una lista paginada de respuestas, con filtros opcionales por evaluación o pregunta.
         """
         try:
             query = Answer.query
@@ -46,6 +46,10 @@ class AnswerRepository:
             if id_evaluation:
                 query = query.filter(Answer.id_evaluation == id_evaluation)
 
+            # Filtrar por pregunta si está presente
+            if id_question:
+                query = query.filter(Answer.id_question == id_question)
+
             # Usar paginate de SQLAlchemy
             paginated_answers = query.paginate(page=page, per_page=per_page, error_out=False)
 
@@ -53,6 +57,7 @@ class AnswerRepository:
             return paginated_answers.items, paginated_answers.total
         except SQLAlchemyError as e:
             raise e
+
 
     @staticmethod
     def update_answer(answer_id, answer_description=None, score=None):

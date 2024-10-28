@@ -16,7 +16,7 @@ CREATE TABLE users (
     dni VARCHAR,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
-    FOREIGN KEY (id_role) REFERENCES roles(id)
+    FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
 CREATE TABLE faculties (
