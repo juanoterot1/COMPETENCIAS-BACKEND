@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import InternalServerError, NotFound
 from app.repositories.evaluation_repository import EvaluationRepository
 from app.services.usage_log_service import UsageLogService
+from app.models.evaluation import Evaluation
 
 logger = logging.getLogger(__name__)
 
@@ -121,3 +122,14 @@ class EvaluationService:
         except Exception as e:
             logger.error(f"Error deleting evaluation with ID {evaluation_id}: {e}")
             raise InternalServerError("An internal error occurred while deleting the evaluation.")
+        
+    @staticmethod
+    def count_evaluations():
+        """
+        Cuenta el número total de evaluaciones en la base de datos.
+        """
+        try:
+            return Evaluation.query.count()
+        except Exception as e:
+            raise InternalServerError("An internal error occurred while counting evaluations.")
+

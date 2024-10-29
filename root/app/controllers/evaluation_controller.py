@@ -141,3 +141,15 @@ def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     except Exception as e:
         logger.error(f"Error deleting evaluation with ID {evaluation_id}: {e}")
         return ApiResponse.internal_server_error()
+    
+
+@evaluation_bp.route('/evaluations/count', methods=['GET'])
+@inject
+def count_evaluations(evaluation_service: EvaluationService):
+    try:
+        total_evaluations = evaluation_service.count_evaluations()
+        return ApiResponse.ok(result={"total_evaluations": total_evaluations})
+    except Exception as e:
+        logger.error(f"Error counting evaluations: {e}")
+        return ApiResponse.internal_server_error()
+

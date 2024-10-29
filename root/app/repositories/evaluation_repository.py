@@ -102,3 +102,13 @@ class EvaluationRepository:
         except SQLAlchemyError as e:
             db.session.rollback()
             raise e
+
+    @staticmethod
+    def count_evaluations():
+        """
+        Cuenta el número total de evaluaciones en la base de datos.
+        """
+        try:
+            return Evaluation.query.count()
+        except SQLAlchemyError as e:
+            raise e
