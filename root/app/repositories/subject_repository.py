@@ -92,3 +92,13 @@ class SubjectRepository:
         except SQLAlchemyError as e:
             db.session.rollback()
             raise e
+
+    @staticmethod
+    def count_subjects():
+        """
+        Cuenta el número total de asignaturas en la base de datos.
+        """
+        try:
+            return Subject.query.count()
+        except SQLAlchemyError as e:
+            raise e

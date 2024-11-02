@@ -133,3 +133,13 @@ def delete_subject(subject_id, subject_service: SubjectService):
     except Exception as e:
         logger.error(f"Error deleting subject with ID {subject_id}: {e}")
         return ApiResponse.internal_server_error()
+
+@subject_bp.route('/subjects/count', methods=['GET'])
+@inject
+def count_subjects(subject_service: SubjectService):
+    try:
+        total_subjects = subject_service.count_subjects()
+        return ApiResponse.ok(result={"total_subjects": total_subjects})
+    except Exception as e:
+        logger.error(f"Error counting subjects: {e}")
+        return ApiResponse.internal_server_error()

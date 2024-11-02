@@ -108,3 +108,12 @@ class SubjectService:
         except Exception as e:
             logger.error(f"Error deleting subject with ID {subject_id}: {e}")
             raise InternalServerError("An internal error occurred while deleting the subject.")
+        
+    def count_subjects(self):
+        try:
+            logger.info("Counting total subjects")
+            total_subjects = self.subject_repository.count_subjects()
+            return total_subjects
+        except Exception as e:
+            logger.error(f"Error counting subjects: {e}")
+            raise InternalServerError("An internal error occurred while counting subjects.")
