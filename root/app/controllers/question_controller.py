@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.question_service import QuestionService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required 
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 question_bp = Blueprint('questions', __name__)
 
 @question_bp.route('/questions', methods=['POST'])
+@jwt_required
 @inject
 def create_question(question_service: QuestionService):
     try:
@@ -34,6 +36,7 @@ def create_question(question_service: QuestionService):
         return ApiResponse.internal_server_error()
 
 @question_bp.route('/questions/<int:question_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_question_by_id(question_id, question_service: QuestionService):
     try:
@@ -53,6 +56,7 @@ def get_question_by_id(question_id, question_service: QuestionService):
         return ApiResponse.internal_server_error()
 
 @question_bp.route('/questions', methods=['GET'])
+@jwt_required
 @inject
 def get_questions(question_service: QuestionService):
     try:
@@ -84,6 +88,7 @@ def get_questions(question_service: QuestionService):
         return ApiResponse.internal_server_error()
 
 @question_bp.route('/questions/<int:question_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_question(question_id, question_service: QuestionService):
     try:
@@ -115,6 +120,7 @@ def update_question(question_id, question_service: QuestionService):
         return ApiResponse.internal_server_error()
 
 @question_bp.route('/questions/<int:question_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_question(question_id, question_service: QuestionService):
     try:

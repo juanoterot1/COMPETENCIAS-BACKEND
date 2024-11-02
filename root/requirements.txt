@@ -10,3 +10,4 @@ Flask-Injector
 aiohttp
 psycopg2-binary
 Flask-Cognito
+PyJWT

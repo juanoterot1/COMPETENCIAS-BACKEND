@@ -1,15 +1,53 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
+from werkzeug.security import check_password_hash
 from app.services.user_service import UserService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_utils import create_jwt_token
+from app.utils.jwt_decorator import jwt_required  # Importa el decorador
 import logging
 
 logger = logging.getLogger(__name__)
 
 user_bp = Blueprint('users', __name__)
 
+@user_bp.route('/login', methods=['POST'])
+def login(user_service: UserService):
+    """
+    Endpoint to log in and generate a JWT token.
+    
+    Expected JSON body:
+        {
+            "username": "example",
+            "password": "password123"
+        }
+    """
+    try:
+        data = request.get_json()
+        if not data:
+            raise BadRequest("Request body must be provided")
+
+        username = data.get('username')
+        password = data.get('password')
+
+        user = user_service.get_user_by_username(username)
+
+        if user and check_password_hash(user.password, password):
+            token = create_jwt_token({"username": user.username, "role": user.role_id})
+            return jsonify(access_token=token), 200
+        else:
+            return jsonify({"msg": "Invalid credentials"}), 401
+
+    except BadRequest as e:
+        logger.error(f"Bad request: {e}")
+        return ApiResponse.bad_request(message=str(e))
+    except Exception as e:
+        logger.error(f"Error during login: {e}")
+        return ApiResponse.internal_server_error()
+
 @user_bp.route('/users', methods=['POST'])
+#@jwt_required
 @inject
 def create_user(user_service: UserService):
     """
@@ -53,6 +91,7 @@ def create_user(user_service: UserService):
         return ApiResponse.internal_server_error()
 
 @user_bp.route('/users/<int:user_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_user_by_id(user_id, user_service: UserService):
     """
@@ -78,6 +117,7 @@ def get_user_by_id(user_id, user_service: UserService):
         return ApiResponse.internal_server_error()
 
 @user_bp.route('/users', methods=['GET'])
+@jwt_required
 @inject
 def get_users(user_service: UserService):
     """
@@ -129,6 +169,7 @@ def get_users(user_service: UserService):
         return ApiResponse.internal_server_error()
 
 @user_bp.route('/users/<int:user_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_user(user_id, user_service: UserService):
     """
@@ -179,6 +220,7 @@ def update_user(user_id, user_service: UserService):
         return ApiResponse.internal_server_error()
 
 @user_bp.route('/users/<int:user_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_user(user_id, user_service: UserService):
     """

@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.role_service import RoleService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 role_bp = Blueprint('roles', __name__)
 
 @role_bp.route('/roles', methods=['POST'])
+@jwt_required
 @inject
 def create_role(role_service: RoleService):
     try:
@@ -32,6 +34,7 @@ def create_role(role_service: RoleService):
         return ApiResponse.internal_server_error()
 
 @role_bp.route('/roles/<int:role_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_role_by_id(role_id, role_service: RoleService):
     try:
@@ -51,6 +54,7 @@ def get_role_by_id(role_id, role_service: RoleService):
         return ApiResponse.internal_server_error()
 
 @role_bp.route('/roles', methods=['GET'])
+@jwt_required
 @inject
 def get_roles(role_service: RoleService):
     try:
@@ -82,6 +86,7 @@ def get_roles(role_service: RoleService):
         return ApiResponse.internal_server_error()
 
 @role_bp.route('/roles/<int:role_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_role(role_id, role_service: RoleService):
     try:
@@ -111,6 +116,7 @@ def update_role(role_id, role_service: RoleService):
         return ApiResponse.internal_server_error()
 
 @role_bp.route('/roles/<int:role_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_role(role_id, role_service: RoleService):
     try:
