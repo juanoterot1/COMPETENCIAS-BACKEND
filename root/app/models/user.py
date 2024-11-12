@@ -11,13 +11,20 @@ class User(db.Model):
     mail = db.Column(db.String, nullable=False, unique=True)
     dni = db.Column(db.String, nullable=False, unique=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+    # Clave foránea que referencia a la tabla roles
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
+    
+    # Relación con el modelo Role
+    role = db.relationship('Role', backref='users', lazy=True)
 
-    def __init__(self, username, password, full_name, mail, dni, created_at=None):
+    def __init__(self, username, password, full_name, mail, dni, role_id, created_at=None):
         self.username = username
         self.password = password
         self.full_name = full_name
         self.mail = mail
-        self.dni = dni  # Asignar el nuevo campo
+        self.dni = dni
+        self.role_id = role_id  # Asignar el rol
         self.created_at = created_at or datetime.utcnow()
 
     def as_dict(self):
@@ -27,8 +34,10 @@ class User(db.Model):
             "password": self.password,
             "full_name": self.full_name,
             "mail": self.mail,
-            "dni": self.dni,  # Incluir el nuevo campo
-            "created_at": self.created_at
+            "dni": self.dni,
+            "role_id": self.role_id,  # Incluir el rol en la salida
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
         }
 
     def __repr__(self):

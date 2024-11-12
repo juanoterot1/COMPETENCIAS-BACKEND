@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.evaluation_service import EvaluationService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required 
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 evaluation_bp = Blueprint('evaluations', __name__)
 
 @evaluation_bp.route('/evaluations', methods=['POST'])
+@jwt_required
 @inject
 def create_evaluation(evaluation_service: EvaluationService):
     try:
@@ -17,14 +19,15 @@ def create_evaluation(evaluation_service: EvaluationService):
         if not data:
             raise BadRequest("Request body must be provided")
 
-        if 'id' not in data or not data['id']:
-            raise BadRequest("ID must be provided and cannot be null")
 
         new_evaluation = evaluation_service.create_evaluation(
             id=data.get('id'),
             name=data.get('name'),
             description=data.get('description'),
-            performed_by=data.get('performed_by')
+            id_subject=data.get('id_subject'),  # Cambiado para coincidir con el modelo
+            id_faculty=data.get('id_faculty'),  # Cambiado para coincidir con el modelo
+            id_user=data.get('id_user'),  # Cambiado de performed_by a id_user
+            status=data.get('status')
         )
 
         return ApiResponse.created(result=new_evaluation.as_dict())
@@ -36,7 +39,9 @@ def create_evaluation(evaluation_service: EvaluationService):
         logger.error(f"Error creating evaluation: {e}")
         return ApiResponse.internal_server_error()
 
+
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -56,6 +61,7 @@ def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
         return ApiResponse.internal_server_error()
 
 @evaluation_bp.route('/evaluations', methods=['GET'])
+@jwt_required
 @inject
 def get_evaluations(evaluation_service: EvaluationService):
     try:
@@ -89,6 +95,7 @@ def get_evaluations(evaluation_service: EvaluationService):
         return ApiResponse.internal_server_error()
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -100,7 +107,9 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
             evaluation_id=evaluation_id,
             name=data.get('name'),
             description=data.get('description'),
-            performed_by=data.get('performed_by')
+            id_subject=data.get('id_subject'),  # Asegúrate de incluir id_subject si es necesario
+            id_faculty=data.get('id_faculty'),  # Asegúrate de incluir id_faculty si es necesario
+            id_user=data.get('id_user')  # Cambiado de performed_by a id_user
         )
 
         if not updated_evaluation:
@@ -118,7 +127,9 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
         logger.error(f"Error updating evaluation: {e}")
         return ApiResponse.internal_server_error()
 
+
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -136,3 +147,16 @@ def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     except Exception as e:
         logger.error(f"Error deleting evaluation with ID {evaluation_id}: {e}")
         return ApiResponse.internal_server_error()
+    
+
+@evaluation_bp.route('/evaluations/count', methods=['GET'])
+@jwt_required
+@inject
+def count_evaluations(evaluation_service: EvaluationService):
+    try:
+        total_evaluations = evaluation_service.count_evaluations()
+        return ApiResponse.ok(result={"total_evaluations": total_evaluations})
+    except Exception as e:
+        logger.error(f"Error counting evaluations: {e}")
+        return ApiResponse.internal_server_error()
+
