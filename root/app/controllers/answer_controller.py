@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.answer_service import AnswerService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required 
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 answer_bp = Blueprint('answers', __name__)
 
 @answer_bp.route('/answers', methods=['POST'])
+@jwt_required
 @inject
 def create_answer(answer_service: AnswerService):
     try:
@@ -35,6 +37,7 @@ def create_answer(answer_service: AnswerService):
         return ApiResponse.internal_server_error()
 
 @answer_bp.route('/answers/<int:answer_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_answer_by_id(answer_id, answer_service: AnswerService):
     try:
@@ -54,6 +57,7 @@ def get_answer_by_id(answer_id, answer_service: AnswerService):
         return ApiResponse.internal_server_error()
 
 @answer_bp.route('/answers', methods=['GET'])
+@jwt_required
 @inject
 def get_answers(answer_service: AnswerService):
     try:
@@ -87,6 +91,7 @@ def get_answers(answer_service: AnswerService):
 
 
 @answer_bp.route('/answers/<int:answer_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_answer(answer_id, answer_service: AnswerService):
     try:
@@ -117,6 +122,7 @@ def update_answer(answer_id, answer_service: AnswerService):
         return ApiResponse.internal_server_error()
 
 @answer_bp.route('/answers/<int:answer_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_answer(answer_id, answer_service: AnswerService):
     try:

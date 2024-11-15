@@ -5,7 +5,7 @@ from injector import singleton
 from app.extensions import db
 from app.extensions import init_logging
 
-# Import Controllers
+
 from app.controllers.tenants_controller import tenant_bp
 from app.controllers.evaluation_controller import evaluation_bp
 from app.controllers.user_controller import user_bp
@@ -17,7 +17,6 @@ from app.controllers.grading_matrix_controller import grading_matrix_bp
 from app.controllers.role_controller import role_bp 
 
 
-# Import Services
 from app.services.tenants_service import TenantService
 from app.services.evaluation_service import EvaluationService
 from app.services.user_service import UserService
@@ -53,7 +52,6 @@ def create_app():
     logger = init_logging()
     logger.info(f"API MOBILE INVOKE")
 
-    # Register blueprints
     app.register_blueprint(tenant_bp, url_prefix='/api/v1')
     app.register_blueprint(evaluation_bp, url_prefix='/api/v1')
     app.register_blueprint(user_bp, url_prefix='/api/v1')

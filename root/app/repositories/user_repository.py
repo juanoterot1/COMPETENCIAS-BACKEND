@@ -152,3 +152,19 @@ class UserRepository:
         except SQLAlchemyError as e:
             db.session.rollback()
             raise e
+        
+    @staticmethod
+    def get_user_by_username(username):
+        """
+        Retrieves a user by its username.
+        
+        Parameters:
+            username (str): The username of the user to retrieve.
+        
+        Returns:
+            User or None: The user object if found, otherwise None.
+        """
+        try:
+            return User.query.filter_by(username=username).first()
+        except SQLAlchemyError as e:
+            raise e

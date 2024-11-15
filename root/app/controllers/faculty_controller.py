@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.faculty_service import FacultyService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required 
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 faculty_bp = Blueprint('faculties', __name__)
 
 @faculty_bp.route('/faculties', methods=['POST'])
+@jwt_required
 @inject
 def create_faculty(faculty_service: FacultyService):
     try:
@@ -32,6 +34,7 @@ def create_faculty(faculty_service: FacultyService):
         return ApiResponse.internal_server_error()
 
 @faculty_bp.route('/faculties/<int:faculty_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_faculty_by_id(faculty_id, faculty_service: FacultyService):
     try:
@@ -51,6 +54,7 @@ def get_faculty_by_id(faculty_id, faculty_service: FacultyService):
         return ApiResponse.internal_server_error()
 
 @faculty_bp.route('/faculties', methods=['GET'])
+@jwt_required
 @inject
 def get_faculties(faculty_service: FacultyService):
     try:
@@ -82,6 +86,7 @@ def get_faculties(faculty_service: FacultyService):
         return ApiResponse.internal_server_error()
 
 @faculty_bp.route('/faculties/<int:faculty_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_faculty(faculty_id, faculty_service: FacultyService):
     try:
@@ -111,6 +116,7 @@ def update_faculty(faculty_id, faculty_service: FacultyService):
         return ApiResponse.internal_server_error()
 
 @faculty_bp.route('/faculties/<int:faculty_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_faculty(faculty_id, faculty_service: FacultyService):
     try:

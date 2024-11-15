@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.subject_service import SubjectService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 subject_bp = Blueprint('subjects', __name__)
 
 @subject_bp.route('/subjects', methods=['POST'])
+@jwt_required
 @inject
 def create_subject(subject_service: SubjectService):
     try:
@@ -34,6 +36,7 @@ def create_subject(subject_service: SubjectService):
         return ApiResponse.internal_server_error()
 
 @subject_bp.route('/subjects/<int:subject_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_subject_by_id(subject_id, subject_service: SubjectService):
     try:
@@ -53,6 +56,7 @@ def get_subject_by_id(subject_id, subject_service: SubjectService):
         return ApiResponse.internal_server_error()
 
 @subject_bp.route('/subjects', methods=['GET'])
+@jwt_required
 @inject
 def get_subjects(subject_service: SubjectService):
     try:
@@ -85,6 +89,7 @@ def get_subjects(subject_service: SubjectService):
         return ApiResponse.internal_server_error()
 
 @subject_bp.route('/subjects/<int:subject_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_subject(subject_id, subject_service: SubjectService):
     try:
@@ -116,6 +121,7 @@ def update_subject(subject_id, subject_service: SubjectService):
         return ApiResponse.internal_server_error()
 
 @subject_bp.route('/subjects/<int:subject_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_subject(subject_id, subject_service: SubjectService):
     try:

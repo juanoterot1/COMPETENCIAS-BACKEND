@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.grading_matrix_service import GradingMatrixService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 grading_matrix_bp = Blueprint('grading_matrices', __name__)
 
 @grading_matrix_bp.route('/grading_matrices', methods=['POST'])
+@jwt_required
 @inject
 def create_grading_matrix(grading_matrix_service: GradingMatrixService):
     try:
@@ -37,6 +39,7 @@ def create_grading_matrix(grading_matrix_service: GradingMatrixService):
         return ApiResponse.internal_server_error()
 
 @grading_matrix_bp.route('/grading_matrices/<int:grading_matrix_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_grading_matrix_by_id(grading_matrix_id, grading_matrix_service: GradingMatrixService):
     try:
@@ -56,6 +59,7 @@ def get_grading_matrix_by_id(grading_matrix_id, grading_matrix_service: GradingM
         return ApiResponse.internal_server_error()
 
 @grading_matrix_bp.route('/grading_matrices', methods=['GET'])
+@jwt_required
 @inject
 def get_grading_matrices(grading_matrix_service: GradingMatrixService):
     try:
@@ -87,6 +91,7 @@ def get_grading_matrices(grading_matrix_service: GradingMatrixService):
         return ApiResponse.internal_server_error()
 
 @grading_matrix_bp.route('/grading_matrices/<int:grading_matrix_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_grading_matrix(grading_matrix_id, grading_matrix_service: GradingMatrixService):
     try:
@@ -120,6 +125,7 @@ def update_grading_matrix(grading_matrix_id, grading_matrix_service: GradingMatr
         return ApiResponse.internal_server_error()
 
 @grading_matrix_bp.route('/grading_matrices/<int:grading_matrix_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_grading_matrix(grading_matrix_id, grading_matrix_service: GradingMatrixService):
     try:

@@ -1,6 +1,7 @@
 import logging
 from flask_injector import inject
 from werkzeug.exceptions import InternalServerError, NotFound, BadRequest
+from werkzeug.security import generate_password_hash
 from app.repositories.user_repository import UserRepository
 from app.services.usage_log_service import UsageLogService
 
@@ -32,9 +33,13 @@ class UserService:
         """
         try:
             logger.info(f"Creating a new user with username: {username}, DNI: {dni}, and role ID: {role_id}")
+
+            # Encriptar la contraseña antes de guardar
+            hashed_password = generate_password_hash(password)
+
             new_user = self.user_repository.create_user(
                 username=username,
-                password=password,
+                password=hashed_password,  # Almacenar la contraseña encriptada
                 full_name=full_name,
                 mail=mail,
                 dni=dni,
@@ -131,8 +136,12 @@ class UserService:
         """
         try:
             logger.info(f"Updating user with ID: {user_id}")
+            # Encriptar la contraseña si se proporciona una nueva
+            if password:
+                password = generate_password_hash(password)
+
             updated_user = self.user_repository.update_user(
-                user_id, username, password, full_name, mail, dni, role_id  # Actualizando role_id
+                user_id, username, password, full_name, mail, dni, role_id
             )
 
             if not updated_user:
@@ -180,3 +189,19 @@ class UserService:
         except Exception as e:
             logger.error(f"Error deleting user with ID {user_id}: {e}")
             raise InternalServerError("An internal error occurred while deleting the user.")
+    
+    def get_user_by_username(self, username):
+        """
+        Retrieves a user by its username.
+        
+        Parameters:
+            username (str): The username of the user to retrieve.
+        
+        Returns:
+            User or None: The user object if found, otherwise None.
+        """
+        try:
+            return self.user_repository.get_user_by_username(username)
+        except Exception as e:
+            logger.error(f"Error fetching user by username {username}: {e}")
+            raise InternalServerError("An internal error occurred while fetching the user.")

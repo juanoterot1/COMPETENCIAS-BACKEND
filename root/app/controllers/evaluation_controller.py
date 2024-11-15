@@ -3,6 +3,7 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.evaluation_service import EvaluationService
 from app.utils.api_response import ApiResponse
+from app.utils.jwt_decorator import jwt_required 
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,6 +11,7 @@ logger = logging.getLogger(__name__)
 evaluation_bp = Blueprint('evaluations', __name__)
 
 @evaluation_bp.route('/evaluations', methods=['POST'])
+@jwt_required
 @inject
 def create_evaluation(evaluation_service: EvaluationService):
     try:
@@ -39,6 +41,7 @@ def create_evaluation(evaluation_service: EvaluationService):
 
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['GET'])
+@jwt_required
 @inject
 def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -58,6 +61,7 @@ def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
         return ApiResponse.internal_server_error()
 
 @evaluation_bp.route('/evaluations', methods=['GET'])
+@jwt_required
 @inject
 def get_evaluations(evaluation_service: EvaluationService):
     try:
@@ -91,6 +95,7 @@ def get_evaluations(evaluation_service: EvaluationService):
         return ApiResponse.internal_server_error()
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['PUT'])
+@jwt_required
 @inject
 def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -124,6 +129,7 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
 
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['DELETE'])
+@jwt_required
 @inject
 def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -144,6 +150,7 @@ def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     
 
 @evaluation_bp.route('/evaluations/count', methods=['GET'])
+@jwt_required
 @inject
 def count_evaluations(evaluation_service: EvaluationService):
     try:
@@ -152,4 +159,3 @@ def count_evaluations(evaluation_service: EvaluationService):
     except Exception as e:
         logger.error(f"Error counting evaluations: {e}")
         return ApiResponse.internal_server_error()
-
