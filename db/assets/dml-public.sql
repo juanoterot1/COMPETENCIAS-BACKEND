@@ -5,6 +5,13 @@ VALUES
     ('Teacher', NOW(), NOW()),
     ('Student', NOW(), NOW());
 
+INSERT INTO permissions (name, description, created_at, updated_at) VALUES
+    ('create_faculties', 'Permission to create faculties',NOW(), NOW()),
+    ('view_faculty', 'Permission to view a specific faculty',NOW(), NOW()),
+    ('view_faculties', 'Permission to view the list of faculties',NOW(), NOW()),
+    ('update_faculties', 'Permission to update faculties',NOW(), NOW()),
+    ('delete_faculties', 'Permission to delete faculties',NOW(), NOW());
+
 -- Insertando datos en la tabla users
 INSERT INTO users (username, password, full_name, phone, mail, role_id, dni, created_at, updated_at)
 VALUES 

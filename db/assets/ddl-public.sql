@@ -87,3 +87,20 @@ CREATE TABLE grading_matrix (
     updated_at TIMESTAMP,
     FOREIGN KEY (id_subject) REFERENCES subjects(id)
 );
+-- Tabla de permisos
+CREATE TABLE permissions (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL UNIQUE,
+    description VARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP 
+);
+
+-- Tabla intermedia para roles y permisos
+CREATE TABLE role_permissions (
+    role_id INTEGER NOT NULL,
+    permission_id INTEGER NOT NULL,
+    PRIMARY KEY (role_id, permission_id),
+    FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE,
+    FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE
+);
