@@ -12,6 +12,7 @@ def create_jwt_token(data, expires_in=20):
     """
     expiration = datetime.utcnow() + timedelta(minutes=expires_in)
     payload = {**data, "exp": expiration}
+    print(f"Payload for JWT: {payload}")  # Log para depuración
     token = jwt.encode(payload, Config.SECRET_KEY, algorithm="HS256")
     return token
 

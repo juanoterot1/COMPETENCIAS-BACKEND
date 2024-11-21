@@ -1,12 +1,40 @@
-START RequestId: da8a76dc-0998-4892-ac30-ddbb77640b4a Version: $LATEST
-END RequestId: d60cf6de-05b7-48a1-8a70-e959b9d794b6
-REPORT RequestId: d60cf6de-05b7-48a1-8a70-e959b9d794b6	Init Duration: 0.06 ms	Duration: 1886.07 ms	Billed Duration: 1887 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: fe5e1086-cda4-4d72-a8db-5eda42bbacac Version: $LATEST
+Payload for JWT: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': datetime.datetime(2024, 11, 20, 21, 4, 30, 314221)}
+END RequestId: 06424d96-4655-47de-bcba-0766651c4627
+REPORT RequestId: 06424d96-4655-47de-bcba-0766651c4627	Init Duration: 0.03 ms	Duration: 1614.31 ms	Billed Duration: 1615 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: a40fa96e-e086-478b-be3f-513458ebd7c6 Version: $LATEST
-END RequestId: 3a2ef99f-e77e-4098-9a30-8af181f462ff
-REPORT RequestId: 3a2ef99f-e77e-4098-9a30-8af181f462ff	Duration: 20.03 ms	Billed Duration: 21 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 2814e66a-1c3d-4f81-9be7-79544db42bc4 Version: $LATEST
+Decoded token: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': 1732136670}
+END RequestId: a19ab7f2-48ee-470a-bac8-b1dc532978d1
+REPORT RequestId: a19ab7f2-48ee-470a-bac8-b1dc532978d1	Duration: 26.51 ms	Billed Duration: 27 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 16c61f56-ed16-4578-81bf-a1c458af58b6 Version: $LATEST
-END RequestId: 9a76e011-a54a-4d6b-97dc-219c600126c6
-REPORT RequestId: 9a76e011-a54a-4d6b-97dc-219c600126c6	Duration: 50.07 ms	Billed Duration: 51 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: ca522bb6-5659-40c1-974a-ec170e3be954 Version: $LATEST
+Decoded token: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': 1732136670}
+END RequestId: 84bb481b-9a06-40cc-bdc0-8c8786a46787
+REPORT RequestId: 84bb481b-9a06-40cc-bdc0-8c8786a46787	Duration: 11.99 ms	Billed Duration: 12 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: bd6a03e4-7618-4cdd-90de-f5834fd0ffa7 Version: $LATEST
+Decoded token: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': 1732136670}
+END RequestId: 94b0b3ba-8a45-473b-b1f4-236ca16b42b7
+REPORT RequestId: 94b0b3ba-8a45-473b-b1f4-236ca16b42b7	Duration: 26.71 ms	Billed Duration: 27 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: 5ef9fafc-86af-4afd-a49b-049114b62f5a Version: $LATEST
+Decoded token: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': 1732136670}
+END RequestId: 8a208eaa-fc16-4691-a276-664264be7f72
+REPORT RequestId: 8a208eaa-fc16-4691-a276-664264be7f72	Duration: 32.80 ms	Billed Duration: 33 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: e2674894-31ff-4086-8d7f-cabe349330d2 Version: $LATEST
+Decoded token: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': 1732136670}
+END RequestId: b451a1f8-4635-4cf8-abb7-a36e065bce56
+REPORT RequestId: b451a1f8-4635-4cf8-abb7-a36e065bce56	Duration: 18.44 ms	Billed Duration: 19 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: f34ef084-1b93-4d84-8a6f-643b48a694d9 Version: $LATEST
+Decoded token: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': 1732136670}
+END RequestId: dfbd9751-0012-4db0-b1ca-da21d6f4dfb1
+REPORT RequestId: dfbd9751-0012-4db0-b1ca-da21d6f4dfb1	Duration: 18.80 ms	Billed Duration: 19 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: 7068ae77-2713-4a28-8ca0-e7ccd894e062 Version: $LATEST
+Decoded token: {'user_id': 54, 'username': 'prueba1', 'role': 50, 'exp': 1732136670}
+END RequestId: 4edc53a1-5beb-4031-a05e-3b2b8c6d8290
+REPORT RequestId: 4edc53a1-5beb-4031-a05e-3b2b8c6d8290	Duration: 7.41 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 

@@ -34,7 +34,7 @@ def login(user_service: UserService):
         user = user_service.get_user_by_username(username)
 
         if user and check_password_hash(user.password, password):
-            token = create_jwt_token({"username": user.username, "role": user.role_id})
+            token = create_jwt_token({"user_id": user.id, "username": user.username, "role": user.role_id})
             return jsonify(access_token=token), 200
         else:
             return jsonify({"msg": "Invalid credentials"}), 401
