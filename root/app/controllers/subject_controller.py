@@ -4,6 +4,7 @@ from werkzeug.exceptions import BadRequest, NotFound
 from app.services.subject_service import SubjectService
 from app.utils.api_response import ApiResponse
 from app.utils.jwt_decorator import jwt_required
+from app.utils.permission_decorator import requires_permission
 import logging
 
 logger = logging.getLogger(__name__)
@@ -12,6 +13,7 @@ subject_bp = Blueprint('subjects', __name__)
 
 @subject_bp.route('/subjects', methods=['POST'])
 @jwt_required
+@requires_permission('create_subjects')
 @inject
 def create_subject(subject_service: SubjectService):
     try:
@@ -37,6 +39,7 @@ def create_subject(subject_service: SubjectService):
 
 @subject_bp.route('/subjects/<int:subject_id>', methods=['GET'])
 @jwt_required
+@requires_permission('view_subject')
 @inject
 def get_subject_by_id(subject_id, subject_service: SubjectService):
     try:
@@ -57,6 +60,7 @@ def get_subject_by_id(subject_id, subject_service: SubjectService):
 
 @subject_bp.route('/subjects', methods=['GET'])
 @jwt_required
+@requires_permission('view_subjects')
 @inject
 def get_subjects(subject_service: SubjectService):
     try:
@@ -90,6 +94,7 @@ def get_subjects(subject_service: SubjectService):
 
 @subject_bp.route('/subjects/<int:subject_id>', methods=['PUT'])
 @jwt_required
+@requires_permission('update_subjects')
 @inject
 def update_subject(subject_id, subject_service: SubjectService):
     try:
@@ -122,6 +127,7 @@ def update_subject(subject_id, subject_service: SubjectService):
 
 @subject_bp.route('/subjects/<int:subject_id>', methods=['DELETE'])
 @jwt_required
+@requires_permission('delete_subjects')
 @inject
 def delete_subject(subject_id, subject_service: SubjectService):
     try:
@@ -141,6 +147,8 @@ def delete_subject(subject_id, subject_service: SubjectService):
         return ApiResponse.internal_server_error()
 
 @subject_bp.route('/subjects/count', methods=['GET'])
+@jwt_required
+@requires_permission('view_subjects')
 @inject
 def count_subjects(subject_service: SubjectService):
     try:

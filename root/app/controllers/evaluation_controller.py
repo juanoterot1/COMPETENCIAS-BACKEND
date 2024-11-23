@@ -3,7 +3,8 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.evaluation_service import EvaluationService
 from app.utils.api_response import ApiResponse
-from app.utils.jwt_decorator import jwt_required 
+from app.utils.jwt_decorator import jwt_required
+from app.utils.permission_decorator import requires_permission
 import logging
 
 logger = logging.getLogger(__name__)
@@ -12,6 +13,7 @@ evaluation_bp = Blueprint('evaluations', __name__)
 
 @evaluation_bp.route('/evaluations', methods=['POST'])
 @jwt_required
+@requires_permission('create_evaluations')
 @inject
 def create_evaluation(evaluation_service: EvaluationService):
     try:
@@ -19,14 +21,13 @@ def create_evaluation(evaluation_service: EvaluationService):
         if not data:
             raise BadRequest("Request body must be provided")
 
-
         new_evaluation = evaluation_service.create_evaluation(
             id=data.get('id'),
             name=data.get('name'),
             description=data.get('description'),
-            id_subject=data.get('id_subject'),  # Cambiado para coincidir con el modelo
-            id_faculty=data.get('id_faculty'),  # Cambiado para coincidir con el modelo
-            id_user=data.get('id_user'),  # Cambiado de performed_by a id_user
+            id_subject=data.get('id_subject'),
+            id_faculty=data.get('id_faculty'),
+            id_user=data.get('id_user'),
             status=data.get('status')
         )
 
@@ -42,6 +43,7 @@ def create_evaluation(evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['GET'])
 @jwt_required
+@requires_permission('view_evaluation')
 @inject
 def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -62,6 +64,7 @@ def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations', methods=['GET'])
 @jwt_required
+@requires_permission('view_evaluations')
 @inject
 def get_evaluations(evaluation_service: EvaluationService):
     try:
@@ -74,7 +77,6 @@ def get_evaluations(evaluation_service: EvaluationService):
         
         evaluations, total = evaluation_service.get_evaluations_paginated(page, per_page, name, description)
 
-        # Calcular si hay páginas siguientes y anteriores
         has_next = (page * per_page) < total
         has_prev = page > 1
 
@@ -96,6 +98,7 @@ def get_evaluations(evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['PUT'])
 @jwt_required
+@requires_permission('update_evaluations')
 @inject
 def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -107,9 +110,9 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
             evaluation_id=evaluation_id,
             name=data.get('name'),
             description=data.get('description'),
-            id_subject=data.get('id_subject'),  # Asegúrate de incluir id_subject si es necesario
-            id_faculty=data.get('id_faculty'),  # Asegúrate de incluir id_faculty si es necesario
-            id_user=data.get('id_user')  # Cambiado de performed_by a id_user
+            id_subject=data.get('id_subject'),
+            id_faculty=data.get('id_faculty'),
+            id_user=data.get('id_user')
         )
 
         if not updated_evaluation:
@@ -127,9 +130,9 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
         logger.error(f"Error updating evaluation: {e}")
         return ApiResponse.internal_server_error()
 
-
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['DELETE'])
 @jwt_required
+@requires_permission('delete_evaluations')
 @inject
 def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -147,10 +150,11 @@ def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     except Exception as e:
         logger.error(f"Error deleting evaluation with ID {evaluation_id}: {e}")
         return ApiResponse.internal_server_error()
-    
+
 
 @evaluation_bp.route('/evaluations/count', methods=['GET'])
 @jwt_required
+@requires_permission('view_evaluations')
 @inject
 def count_evaluations(evaluation_service: EvaluationService):
     try:

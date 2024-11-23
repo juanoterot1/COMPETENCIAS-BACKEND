@@ -3,7 +3,8 @@ from flask_injector import inject
 from werkzeug.exceptions import BadRequest, NotFound
 from app.services.question_service import QuestionService
 from app.utils.api_response import ApiResponse
-from app.utils.jwt_decorator import jwt_required 
+from app.utils.jwt_decorator import jwt_required
+from app.utils.permission_decorator import requires_permission
 import logging
 
 logger = logging.getLogger(__name__)
@@ -12,6 +13,7 @@ question_bp = Blueprint('questions', __name__)
 
 @question_bp.route('/questions', methods=['POST'])
 @jwt_required
+@requires_permission('create_questions')
 @inject
 def create_question(question_service: QuestionService):
     try:
@@ -37,6 +39,7 @@ def create_question(question_service: QuestionService):
 
 @question_bp.route('/questions/<int:question_id>', methods=['GET'])
 @jwt_required
+@requires_permission('view_question')
 @inject
 def get_question_by_id(question_id, question_service: QuestionService):
     try:
@@ -57,6 +60,7 @@ def get_question_by_id(question_id, question_service: QuestionService):
 
 @question_bp.route('/questions', methods=['GET'])
 @jwt_required
+@requires_permission('view_questions')
 @inject
 def get_questions(question_service: QuestionService):
     try:
@@ -89,6 +93,7 @@ def get_questions(question_service: QuestionService):
 
 @question_bp.route('/questions/<int:question_id>', methods=['PUT'])
 @jwt_required
+@requires_permission('update_questions')
 @inject
 def update_question(question_id, question_service: QuestionService):
     try:
@@ -121,6 +126,7 @@ def update_question(question_id, question_service: QuestionService):
 
 @question_bp.route('/questions/<int:question_id>', methods=['DELETE'])
 @jwt_required
+@requires_permission('delete_questions')
 @inject
 def delete_question(question_id, question_service: QuestionService):
     try:

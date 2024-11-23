@@ -5,7 +5,8 @@ from werkzeug.security import check_password_hash
 from app.services.user_service import UserService
 from app.utils.api_response import ApiResponse
 from app.utils.jwt_utils import create_jwt_token
-from app.utils.jwt_decorator import jwt_required  # Importa el decorador
+from app.utils.jwt_decorator import jwt_required
+from app.utils.permission_decorator import requires_permission
 import logging
 
 logger = logging.getLogger(__name__)
@@ -48,6 +49,7 @@ def login(user_service: UserService):
 
 @user_bp.route('/users', methods=['POST'])
 #@jwt_required
+@requires_permission('create_users') 
 @inject
 def create_user(user_service: UserService):
     """
@@ -92,6 +94,7 @@ def create_user(user_service: UserService):
 
 @user_bp.route('/users/<int:user_id>', methods=['GET'])
 @jwt_required
+@requires_permission('view_users')
 @inject
 def get_user_by_id(user_id, user_service: UserService):
     """
@@ -118,6 +121,7 @@ def get_user_by_id(user_id, user_service: UserService):
 
 @user_bp.route('/users', methods=['GET'])
 @jwt_required
+@requires_permission('views_users') 
 @inject
 def get_users(user_service: UserService):
     """
@@ -170,6 +174,7 @@ def get_users(user_service: UserService):
 
 @user_bp.route('/users/<int:user_id>', methods=['PUT'])
 @jwt_required
+@requires_permission('update_users') 
 @inject
 def update_user(user_id, user_service: UserService):
     """
@@ -221,6 +226,7 @@ def update_user(user_id, user_service: UserService):
 
 @user_bp.route('/users/<int:user_id>', methods=['DELETE'])
 @jwt_required
+@requires_permission('delete_users') 
 @inject
 def delete_user(user_id, user_service: UserService):
     """
