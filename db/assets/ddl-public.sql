@@ -104,3 +104,15 @@ CREATE TABLE role_permissions (
     FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE,
     FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE
 );
+
+CREATE TABLE feedback (
+    id SERIAL PRIMARY KEY,
+    id_evaluation INTEGER NOT NULL,
+    id_user INTEGER NOT NULL,
+    feedback_text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_evaluation) REFERENCES evaluations(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE
+);
+
