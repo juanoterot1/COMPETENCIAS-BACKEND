@@ -40,7 +40,7 @@ def create_answer(answer_service: AnswerService):
 
 @answer_bp.route('/answers/<int:answer_id>', methods=['GET'])
 @jwt_required
-@requires_permission('view_answers')
+@requires_permission('view_answer')
 @inject
 def get_answer_by_id(answer_id, answer_service: AnswerService):
     try:
@@ -61,7 +61,7 @@ def get_answer_by_id(answer_id, answer_service: AnswerService):
 
 @answer_bp.route('/answers', methods=['GET'])
 @jwt_required
-@requires_permission('views_answers')
+@requires_permission('view_answers')
 @inject
 def get_answers(answer_service: AnswerService):
     try:

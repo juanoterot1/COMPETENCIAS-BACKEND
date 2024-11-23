@@ -1,270 +1,306 @@
-START RequestId: 93002985-0495-4f13-947a-5f7a831ad816 Version: $LATEST
-END RequestId: 57a3cc98-ece1-4a20-a6a7-418d03129cea
-REPORT RequestId: 57a3cc98-ece1-4a20-a6a7-418d03129cea	Init Duration: 0.05 ms	Duration: 1099.45 ms	Billed Duration: 1100 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: cab234f4-1840-4696-a951-f6aa0a83ccc3 Version: $LATEST
+END RequestId: 216595bc-b035-4909-90d5-37adcb3f68b9
+REPORT RequestId: 216595bc-b035-4909-90d5-37adcb3f68b9	Init Duration: 0.06 ms	Duration: 1062.72 ms	Billed Duration: 1063 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: bae95773-eb9c-4cb1-8028-f47796cb36ca Version: $LATEST
-Payload for JWT: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': datetime.datetime(2024, 11, 23, 16, 16, 3, 646705)}
-END RequestId: a1c08479-105d-47da-ad0e-41eb211e2e91
-REPORT RequestId: a1c08479-105d-47da-ad0e-41eb211e2e91	Duration: 126.73 ms	Billed Duration: 127 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 92bdd9c0-f972-4393-844d-0a2a8a21dc33 Version: $LATEST
+Decoded token: {'user_id': 1, 'username': 'admin', 'role': 1, 'exp': 1732385037}
+END RequestId: b74cfb0a-30e9-4eb5-9aef-5fe498f99f1c
+REPORT RequestId: b74cfb0a-30e9-4eb5-9aef-5fe498f99f1c	Duration: 53.96 ms	Billed Duration: 54 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 24575499-0160-4f29-9414-bdb574679460 Version: $LATEST
-END RequestId: 3c58f5f7-5c2f-4101-85c0-644290df06e4
-REPORT RequestId: 3c58f5f7-5c2f-4101-85c0-644290df06e4	Duration: 2.36 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: ac09dc89-36e2-4b34-82ae-78f1bb83e17d Version: $LATEST
+END RequestId: 7bf13002-bf3e-4e54-8825-75adcf1dc09e
+REPORT RequestId: 7bf13002-bf3e-4e54-8825-75adcf1dc09e	Duration: 1.67 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 17695657-16f3-4288-8e8e-da3e96bfe475 Version: $LATEST
-END RequestId: 79a42f35-0730-4234-b52f-cb8c65a40507
-REPORT RequestId: 79a42f35-0730-4234-b52f-cb8c65a40507	Duration: 2.49 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 5f028488-8a53-4c8e-8742-1e32d71e924f Version: $LATEST
+Decoded token: {'user_id': 1, 'username': 'admin', 'role': 1, 'exp': 1732385037}
+END RequestId: 7c866431-e3d6-4fe9-82da-2b796fbb60d2
+REPORT RequestId: 7c866431-e3d6-4fe9-82da-2b796fbb60d2	Duration: 10.17 ms	Billed Duration: 11 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 58968484-e30a-4ffa-a77c-c126ee1d7d33 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732378563}
-END RequestId: ebbe954c-1381-467d-a8d1-a0f3f3fe1eb7
-REPORT RequestId: ebbe954c-1381-467d-a8d1-a0f3f3fe1eb7	Duration: 12.16 ms	Billed Duration: 13 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 9da47848-24f3-46ce-903e-bb6c41cd0868 Version: $LATEST
+END RequestId: a34ee1b6-3bbe-4c75-9a46-97a5f80dbfdc
+REPORT RequestId: a34ee1b6-3bbe-4c75-9a46-97a5f80dbfdc	Duration: 1.52 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: f17bd2a2-564a-4a21-ab70-1066f1bcd131 Version: $LATEST
-END RequestId: 53f3d646-2014-49ec-9bb7-a626f246bfd2
-REPORT RequestId: 53f3d646-2014-49ec-9bb7-a626f246bfd2	Duration: 10.87 ms	Billed Duration: 11 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 6921c176-8e3c-460f-93d5-3972797369c3 Version: $LATEST
+Decoded token: {'user_id': 1, 'username': 'admin', 'role': 1, 'exp': 1732385037}
+END RequestId: 297b3758-2b86-4ea4-83b9-cf0aab53f954
+REPORT RequestId: 297b3758-2b86-4ea4-83b9-cf0aab53f954	Duration: 10.56 ms	Billed Duration: 11 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: e5f93e1f-ef08-4bb5-b346-6e42d8a74efe Version: $LATEST
-END RequestId: f7c69543-9764-4c83-bfbc-ddf767a2ad14
-REPORT RequestId: f7c69543-9764-4c83-bfbc-ddf767a2ad14	Duration: 3.08 ms	Billed Duration: 4 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f9682fb5-bcb3-473b-9c9d-2a2394e5ab0e Version: $LATEST
+END RequestId: 08bb5d47-ce3d-41bf-8019-015a49c8fc78
+REPORT RequestId: 08bb5d47-ce3d-41bf-8019-015a49c8fc78	Duration: 1.40 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: bd961d2f-93d0-43ce-83f0-c927fd9650aa Version: $LATEST
-Payload for JWT: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': datetime.datetime(2024, 11, 23, 16, 16, 31, 897456)}
-END RequestId: 41f08972-08d7-4bf4-ab18-e34d7374daed
-REPORT RequestId: 41f08972-08d7-4bf4-ab18-e34d7374daed	Duration: 119.10 ms	Billed Duration: 120 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 020af99d-1220-4c36-b62f-0efe54b63deb Version: $LATEST
+Decoded token: {'user_id': 1, 'username': 'admin', 'role': 1, 'exp': 1732385037}
+END RequestId: 14dd51fa-0de6-46a0-88f3-4a386f65c231
+REPORT RequestId: 14dd51fa-0de6-46a0-88f3-4a386f65c231	Duration: 11.98 ms	Billed Duration: 12 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: b00986a3-42f5-49ed-b1ad-a178151d3ebb Version: $LATEST
-END RequestId: ffe2dbb4-17d4-4d3e-a1cd-39d26f7f9738
-REPORT RequestId: ffe2dbb4-17d4-4d3e-a1cd-39d26f7f9738	Duration: 3.42 ms	Billed Duration: 4 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: a2b81108-da31-4d35-be9d-8a0b32fe22ab Version: $LATEST
+END RequestId: 181a8fb0-be7b-4bca-999c-b3daf72c9a26
+REPORT RequestId: 181a8fb0-be7b-4bca-999c-b3daf72c9a26	Duration: 1.98 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 94fb51f2-d7cd-41cc-83bd-08d75f6989af Version: $LATEST
-END RequestId: c532358b-d5d9-4949-95c2-e0391f532233
-REPORT RequestId: c532358b-d5d9-4949-95c2-e0391f532233	Duration: 2.41 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 660d68b8-c010-4886-8c12-b00e37529530 Version: $LATEST
+Decoded token: {'user_id': 1, 'username': 'admin', 'role': 1, 'exp': 1732385037}
+END RequestId: 79a70474-0019-424b-8ad6-00febaa92b62
+REPORT RequestId: 79a70474-0019-424b-8ad6-00febaa92b62	Duration: 10.60 ms	Billed Duration: 11 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 6750cd7b-7ecd-4efe-abd3-165b57188c6a Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732378591}
-END RequestId: de07d70f-8b9c-498f-9c9f-a41a60abad40
-REPORT RequestId: de07d70f-8b9c-498f-9c9f-a41a60abad40	Duration: 5.88 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 19777f54-ebec-4799-a39b-5410b8468e05 Version: $LATEST
+END RequestId: b523c3b4-3ada-4061-9b0b-ba61cbf1c249
+REPORT RequestId: b523c3b4-3ada-4061-9b0b-ba61cbf1c249	Duration: 1.56 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: ca8e606f-e694-451e-a591-41b53d436821 Version: $LATEST
-END RequestId: b88dc957-627f-467f-8cf9-a7ff74880921
-REPORT RequestId: b88dc957-627f-467f-8cf9-a7ff74880921	Duration: 4.28 ms	Billed Duration: 5 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 45502857-9d13-4795-adea-bd9e245979c3 Version: $LATEST
+Decoded token: {'user_id': 1, 'username': 'admin', 'role': 1, 'exp': 1732385037}
+END RequestId: d886a761-bc55-43f9-8804-b11147768de0
+REPORT RequestId: d886a761-bc55-43f9-8804-b11147768de0	Duration: 10.31 ms	Billed Duration: 11 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 3fde2966-f3d6-4111-86f2-1dc895055082 Version: $LATEST
-END RequestId: e9145428-342a-40da-a036-a5de6141d603
-REPORT RequestId: e9145428-342a-40da-a036-a5de6141d603	Duration: 2.32 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 8c840e83-6ae5-49c2-ba43-ddcceb8d09b3 Version: $LATEST
+END RequestId: d7516bf9-80d6-42cd-9db0-51a9a52268db
+REPORT RequestId: d7516bf9-80d6-42cd-9db0-51a9a52268db	Duration: 1.35 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 03783041-7c3c-48e4-b1c0-3ab017677ade Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732378591}
-END RequestId: f98c9190-d056-498e-ae88-71073248bc85
-REPORT RequestId: f98c9190-d056-498e-ae88-71073248bc85	Duration: 9.84 ms	Billed Duration: 10 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 6846d212-f1fd-47ab-8d83-9825e02f4bca Version: $LATEST
+Payload for JWT: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': datetime.datetime(2024, 11, 23, 18, 10, 7, 477973)}
+END RequestId: 4158d6c1-de01-4717-b3c7-6a3e3d144963
+REPORT RequestId: 4158d6c1-de01-4717-b3c7-6a3e3d144963	Duration: 83.74 ms	Billed Duration: 84 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 0d4f49ca-5c6e-4a5f-9b5e-173b7486e034 Version: $LATEST
-END RequestId: 96873064-6a31-4a2b-9277-f630096d8e40
-REPORT RequestId: 96873064-6a31-4a2b-9277-f630096d8e40	Duration: 2.34 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f4d43d72-f705-43fc-b779-51e138098cd3 Version: $LATEST
+END RequestId: 3af82a27-b157-484f-a7d7-e83f7230676d
+REPORT RequestId: 3af82a27-b157-484f-a7d7-e83f7230676d	Duration: 2.62 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: cb983491-56a3-47ea-aa03-4bc8ae2b3d1c Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732378591}
-END RequestId: dd460697-ae1a-426c-814d-c5cd4508a44e
-REPORT RequestId: dd460697-ae1a-426c-814d-c5cd4508a44e	Duration: 19.56 ms	Billed Duration: 20 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f967968a-3aba-429f-92cf-d6365095165a Version: $LATEST
+END RequestId: 4468686e-9a4f-4e66-b367-a908d967a1b1
+REPORT RequestId: 4468686e-9a4f-4e66-b367-a908d967a1b1	Duration: 1.78 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 68a6800a-3f4d-44d9-8546-6a10e8c80209 Version: $LATEST
-END RequestId: 27513f5f-bbba-41ef-9073-0bdb73b2a8f3
-REPORT RequestId: 27513f5f-bbba-41ef-9073-0bdb73b2a8f3	Duration: 2.14 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: cb4950ce-2f82-4493-9c8e-6f5fe5cc9896 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 9345be8a-3d84-4c42-aa1c-1aa12d2b370e
+REPORT RequestId: 9345be8a-3d84-4c42-aa1c-1aa12d2b370e	Duration: 6.06 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 3e97f47a-0684-401d-b3e9-ff2753a2f8c5 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732378591}
-END RequestId: 237c4fc6-620f-4613-9350-4de7969c7f03
-REPORT RequestId: 237c4fc6-620f-4613-9350-4de7969c7f03	Duration: 6.97 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e68a836c-fb2d-4935-a940-c771236fa1c6 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 1f01d6b1-4e1b-4a6a-88af-7a0d1de247b6
+REPORT RequestId: 1f01d6b1-4e1b-4a6a-88af-7a0d1de247b6	Duration: 5.47 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 34a1f6ab-b950-411e-ac85-e2195496d8c6 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732378591}
-END RequestId: 551d2a49-258c-40fc-9744-dafc0be68caa
-REPORT RequestId: 551d2a49-258c-40fc-9744-dafc0be68caa	Duration: 7.58 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 94120e57-8664-4c13-a700-72e39aed1349 Version: $LATEST
+END RequestId: e1482852-8b58-4899-8fd0-4fb40ae4cc36
+REPORT RequestId: e1482852-8b58-4899-8fd0-4fb40ae4cc36	Duration: 1.39 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 22cb4a2f-d6f4-4723-b0e9-b67585e0e707 Version: $LATEST
-Payload for JWT: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': datetime.datetime(2024, 11, 23, 16, 29, 5, 802858)}
-END RequestId: e693f324-483c-4cc0-ab81-b31e1a748dbb
-REPORT RequestId: e693f324-483c-4cc0-ab81-b31e1a748dbb	Duration: 100.97 ms	Billed Duration: 101 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 6624d560-02e8-4062-b7dd-6cad8ad892d1 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 7dc268bb-48e0-453a-accb-2e7140805a99
+REPORT RequestId: 7dc268bb-48e0-453a-accb-2e7140805a99	Duration: 5.94 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 28c99e53-b7f6-4b30-a659-60c7610b4a74 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379345}
-END RequestId: 85496a64-f86b-4fc3-b258-138bec7ee53a
-REPORT RequestId: 85496a64-f86b-4fc3-b258-138bec7ee53a	Duration: 44.15 ms	Billed Duration: 45 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 74af08a7-516f-4fc6-9e2d-08fe57f1c759 Version: $LATEST
+END RequestId: b8969656-6ff9-468f-a9f9-741db7cc9bbc
+REPORT RequestId: b8969656-6ff9-468f-a9f9-741db7cc9bbc	Duration: 1.49 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 0003e8b3-32b6-4189-abc7-7f2122906ff8 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379345}
-[WARNING]	2024-11-23T16:10:46.893Z	a07e8f97-5059-4716-a1a6-bcaa20b9f69a	Role not found: 404 Not Found: Role with ID 5 not found.
-[WARNING]	2024-11-23T16:10:46.893Z	a07e8f97-5059-4716-a1a6-bcaa20b9f69a	Role not found: 404 Not Found: Role with ID 5 not found.
-END RequestId: a07e8f97-5059-4716-a1a6-bcaa20b9f69a
-REPORT RequestId: a07e8f97-5059-4716-a1a6-bcaa20b9f69a	Duration: 5.43 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 5f203af9-4622-418a-9060-3ff2cde9898b Version: $LATEST
+END RequestId: 5a33b563-985d-4932-8f88-b0841154f202
+REPORT RequestId: 5a33b563-985d-4932-8f88-b0841154f202	Duration: 1.51 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 24f1e996-8351-40d0-8a81-786486fdca56 Version: $LATEST
-Payload for JWT: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': datetime.datetime(2024, 11, 23, 16, 31, 2, 922217)}
-END RequestId: d14e21b7-982f-4f98-8713-71ef7b82dab0
-REPORT RequestId: d14e21b7-982f-4f98-8713-71ef7b82dab0	Duration: 93.03 ms	Billed Duration: 94 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 88a24502-7ddb-420b-b409-efc0e2f6fe58 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 6aa91143-a4f0-4fbb-b31c-ee7bd67ecb18
+REPORT RequestId: 6aa91143-a4f0-4fbb-b31c-ee7bd67ecb18	Duration: 5.79 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: d1dcd4f5-9e7b-470d-bd17-b924e3126438 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379462}
-[WARNING]	2024-11-23T16:11:20.064Z	c0aa523c-2f91-4742-973f-ce753e0801c6	Role not found: 404 Not Found: Role with ID 5 not found.
-[WARNING]	2024-11-23T16:11:20.065Z	c0aa523c-2f91-4742-973f-ce753e0801c6	Role not found: 404 Not Found: Role with ID 5 not found.
-END RequestId: c0aa523c-2f91-4742-973f-ce753e0801c6
-REPORT RequestId: c0aa523c-2f91-4742-973f-ce753e0801c6	Duration: 7.24 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 623c90a4-fdaf-49d7-aa20-bf69804b8a18 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 1448a714-6774-4854-9715-12b7ff9c1eff
+REPORT RequestId: 1448a714-6774-4854-9715-12b7ff9c1eff	Duration: 6.02 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 0ca7cdcd-89d8-476d-b71f-d84340969b1b Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379462}
-END RequestId: 146e4aa9-d562-4062-9aee-353c9a63828f
-REPORT RequestId: 146e4aa9-d562-4062-9aee-353c9a63828f	Duration: 6.98 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 437022e5-4360-4df8-9431-f4b65758bc75 Version: $LATEST
+END RequestId: 26de7c0e-ed7c-454d-b5ce-a0ccf0d6366c
+REPORT RequestId: 26de7c0e-ed7c-454d-b5ce-a0ccf0d6366c	Duration: 1.38 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: dd869ee4-d558-41ef-ab34-f7ae253fe865 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379462}
-END RequestId: d6ce7dde-c64a-4b40-90e3-24be1c79d430
-REPORT RequestId: d6ce7dde-c64a-4b40-90e3-24be1c79d430	Duration: 23.65 ms	Billed Duration: 24 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: dff8822f-3965-4406-af10-0efa81095c58 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: bf91e289-9226-4f21-a415-38458a817142
+REPORT RequestId: bf91e289-9226-4f21-a415-38458a817142	Duration: 4.86 ms	Billed Duration: 5 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 2d9fabe2-29b1-4b75-b572-92ddb5353c9e Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379462}
-END RequestId: 20caeb8c-5ac2-4731-b3ee-32b32a95a0a9
-REPORT RequestId: 20caeb8c-5ac2-4731-b3ee-32b32a95a0a9	Duration: 114.63 ms	Billed Duration: 115 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 851a050d-27e6-4d2f-a6b3-360fa2e61cbc Version: $LATEST
+END RequestId: aed3cc29-77eb-4bcb-963d-e08c22e08db9
+REPORT RequestId: aed3cc29-77eb-4bcb-963d-e08c22e08db9	Duration: 1.42 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 801aca94-4a62-46ba-9e73-67dd99bd1cdf Version: $LATEST
-Payload for JWT: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': datetime.datetime(2024, 11, 23, 16, 43, 29, 780598)}
-END RequestId: cd292540-7487-4e99-998a-64e187e9e8d9
-REPORT RequestId: cd292540-7487-4e99-998a-64e187e9e8d9	Duration: 93.61 ms	Billed Duration: 94 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 4619e2b3-d605-4c9b-ba8f-864947918578 Version: $LATEST
+END RequestId: 2c21cc0c-2542-4115-bf9b-299b80445af8
+REPORT RequestId: 2c21cc0c-2542-4115-bf9b-299b80445af8	Duration: 1.28 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 17737393-e650-4876-ba47-4793c0ef13d8 Version: $LATEST
-Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732380209}
-END RequestId: 050c5556-85c0-46aa-b9f0-de9c0b75d32e
-REPORT RequestId: 050c5556-85c0-46aa-b9f0-de9c0b75d32e	Duration: 8.83 ms	Billed Duration: 9 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 9827a5b3-dc78-481e-b62b-15eb07b4ad6a Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: c6e5e798-31d0-4fdf-841a-b10abb8f7fe7
+REPORT RequestId: c6e5e798-31d0-4fdf-841a-b10abb8f7fe7	Duration: 5.48 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 92197510-fdaa-40bc-bb6b-11e64e7f44cb Version: $LATEST
-END RequestId: 335a8b5a-21ca-4acf-999f-60d49f7a6a43
-REPORT RequestId: 335a8b5a-21ca-4acf-999f-60d49f7a6a43	Duration: 1.54 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 11eba609-b4d8-4520-bbb5-e0d5b4f2bd03 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: b9f63346-65ea-40d4-9bd3-099114ab0b7c
+REPORT RequestId: b9f63346-65ea-40d4-9bd3-099114ab0b7c	Duration: 5.96 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: faeeb510-d0db-4efb-9944-20009348054b Version: $LATEST
-Payload for JWT: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': datetime.datetime(2024, 11, 23, 16, 44, 34, 769403)}
-END RequestId: ed5592d0-2de8-4cfb-917e-15717e70410b
-REPORT RequestId: ed5592d0-2de8-4cfb-917e-15717e70410b	Duration: 104.60 ms	Billed Duration: 105 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 1735c2f6-7264-4726-9ebf-11b3634901ff Version: $LATEST
+END RequestId: 011c494d-f466-4b5c-ac8d-aa74d7b9f146
+REPORT RequestId: 011c494d-f466-4b5c-ac8d-aa74d7b9f146	Duration: 1.93 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: de3ff9a0-07ae-4268-aa32-f72453e07c62 Version: $LATEST
-END RequestId: 213130c0-e4de-45bd-b23d-b5f68b14a016
-REPORT RequestId: 213130c0-e4de-45bd-b23d-b5f68b14a016	Duration: 2.50 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 98704e22-1faa-4c88-a6f3-23af1b177669 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 2752a430-295a-47c5-8063-d78db9eff361
+REPORT RequestId: 2752a430-295a-47c5-8063-d78db9eff361	Duration: 6.87 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 3381e246-12f1-44b5-bf01-5127e81fa7aa Version: $LATEST
-END RequestId: 1501fa79-d357-4245-afcc-43171c30c30f
-REPORT RequestId: 1501fa79-d357-4245-afcc-43171c30c30f	Duration: 3.65 ms	Billed Duration: 4 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 61196132-6395-4b25-8eb3-a0cbfbd7f7b2 Version: $LATEST
+END RequestId: 42b00869-db3d-43b9-ba3e-7438dc4fa865
+REPORT RequestId: 42b00869-db3d-43b9-ba3e-7438dc4fa865	Duration: 1.29 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: ecd2aa0d-43c6-454a-a7e7-4faf2098f868 Version: $LATEST
-Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732380274}
-END RequestId: 72578d0f-f5ab-4217-802d-0f4d9beedf31
-REPORT RequestId: 72578d0f-f5ab-4217-802d-0f4d9beedf31	Duration: 6.88 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 81948335-8b4c-41c9-bf72-b057f54420a3 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 7fbcf58f-555c-402c-bcf0-bda8d0dc59a0
+REPORT RequestId: 7fbcf58f-555c-402c-bcf0-bda8d0dc59a0	Duration: 5.82 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 896ec52b-cd13-4bcc-9c72-28555b18c269 Version: $LATEST
-END RequestId: 3937722b-87a8-45bd-9c68-1c9199836274
-REPORT RequestId: 3937722b-87a8-45bd-9c68-1c9199836274	Duration: 5.07 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 3ab916bc-f88c-464f-8654-9e7435bed697 Version: $LATEST
+END RequestId: 1ed59ff1-e847-480a-9bbd-733de72c20c0
+REPORT RequestId: 1ed59ff1-e847-480a-9bbd-733de72c20c0	Duration: 1.62 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: adb20a85-52ab-40c0-b6ea-0f9e0d63c566 Version: $LATEST
-END RequestId: cbc07b5f-930c-42b9-9bbd-3784b484d35b
-REPORT RequestId: cbc07b5f-930c-42b9-9bbd-3784b484d35b	Duration: 2.31 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f72040b5-dced-427f-b6d6-2cbcd70cac4f Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: fc684f23-b450-4e12-b017-00e5133253eb
+REPORT RequestId: fc684f23-b450-4e12-b017-00e5133253eb	Duration: 7.21 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: ae20d476-8e23-43f6-b658-d0b88c5f0b53 Version: $LATEST
-Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732380274}
-END RequestId: 15c64efa-7dd2-47a6-b7ba-ae44cfc45ba7
-REPORT RequestId: 15c64efa-7dd2-47a6-b7ba-ae44cfc45ba7	Duration: 16.36 ms	Billed Duration: 17 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 94ef359c-3505-4781-97da-9d67cc076981 Version: $LATEST
+END RequestId: fc720cda-adb2-440a-8071-4fc741787582
+REPORT RequestId: fc720cda-adb2-440a-8071-4fc741787582	Duration: 1.45 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 332438ee-90fb-4b68-8d8f-124ae2ee083a Version: $LATEST
-END RequestId: e4e54308-3d94-4a4e-b375-1adcc3975e9b
-REPORT RequestId: e4e54308-3d94-4a4e-b375-1adcc3975e9b	Duration: 2.14 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: ba56aaf0-166f-4021-9ee2-e2262eed11db Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 4f37166f-79d1-412f-a822-5eddeffef908
+REPORT RequestId: 4f37166f-79d1-412f-a822-5eddeffef908	Duration: 6.62 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: c24d4c78-b95e-4f15-9fbe-4a65e489e74a Version: $LATEST
-Payload for JWT: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': datetime.datetime(2024, 11, 23, 16, 45, 11, 185291)}
-END RequestId: 17dab27f-b1ac-4cd6-b6cc-65305eb84c46
-REPORT RequestId: 17dab27f-b1ac-4cd6-b6cc-65305eb84c46	Duration: 99.49 ms	Billed Duration: 100 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 32dab5c2-09db-4a35-8415-6969e60939ab Version: $LATEST
+END RequestId: 2c100129-0d5a-478b-bec5-2a18cf5ce53f
+REPORT RequestId: 2c100129-0d5a-478b-bec5-2a18cf5ce53f	Duration: 1.36 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: a65f4bb4-dd56-4d20-93b1-8ac0d3735146 Version: $LATEST
-END RequestId: 75a52782-bf0c-46b1-9fbf-729dddcf0d0a
-REPORT RequestId: 75a52782-bf0c-46b1-9fbf-729dddcf0d0a	Duration: 1.76 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 87710f92-4f64-457d-8ccd-b76ffa4bbc85 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: b2739da3-147e-41d0-bba9-cc112a562875
+REPORT RequestId: b2739da3-147e-41d0-bba9-cc112a562875	Duration: 7.78 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 788492a8-8672-438a-9945-3a3af753d332 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380311}
-END RequestId: e951a929-4f33-4254-aa16-05ecc23bb607
-REPORT RequestId: e951a929-4f33-4254-aa16-05ecc23bb607	Duration: 4.19 ms	Billed Duration: 5 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 04f07ab5-1689-40c2-8347-0fae0c113c4e Version: $LATEST
+END RequestId: 4526144b-93a2-46b9-9f39-ab4a5ca15475
+REPORT RequestId: 4526144b-93a2-46b9-9f39-ab4a5ca15475	Duration: 1.41 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: d15f56d0-d540-4868-a644-1e226f052531 Version: $LATEST
-END RequestId: 65897f25-7f36-4959-8735-2269be645063
-REPORT RequestId: 65897f25-7f36-4959-8735-2269be645063	Duration: 2.59 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 36f2fa4c-8774-4aea-b77f-d1e442540bef Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: 8acca802-caa6-45fc-8763-07914b491bc7
+REPORT RequestId: 8acca802-caa6-45fc-8763-07914b491bc7	Duration: 6.18 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 796fabbf-6f33-46f3-9b4c-d5cf92d7d02f Version: $LATEST
-END RequestId: 9c39b10b-c12a-484e-a706-ead59d95b489
-REPORT RequestId: 9c39b10b-c12a-484e-a706-ead59d95b489	Duration: 5.11 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: bf2041c0-b121-4b23-9fca-10cb7765f825 Version: $LATEST
+END RequestId: 6a50429a-403e-47e1-a3e7-4318cc5cf3df
+REPORT RequestId: 6a50429a-403e-47e1-a3e7-4318cc5cf3df	Duration: 1.44 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 2938780c-6f18-4cdf-b405-9bc5ad06b3d2 Version: $LATEST
-END RequestId: a2f58516-c4d4-4693-81ec-88d44e3c5c7f
-REPORT RequestId: a2f58516-c4d4-4693-81ec-88d44e3c5c7f	Duration: 3.22 ms	Billed Duration: 4 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e94ee94e-e949-4a09-be53-8f3266975859 Version: $LATEST
+Decoded token: {'user_id': 2, 'username': 'estudiante', 'role': 3, 'exp': 1732385407}
+END RequestId: d294198f-a078-457f-8127-c50a44244ee4
+REPORT RequestId: d294198f-a078-457f-8127-c50a44244ee4	Duration: 4.99 ms	Billed Duration: 5 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: d5e3216a-062a-45b0-a669-3c0e1bae64b1 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380311}
-END RequestId: bd3dae32-746d-4e4a-b33e-5fc34d1200b3
-REPORT RequestId: bd3dae32-746d-4e4a-b33e-5fc34d1200b3	Duration: 14.55 ms	Billed Duration: 15 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: ec15f80b-4c83-4eee-b76b-9a6beb0fe1b8 Version: $LATEST
+END RequestId: c6933168-3c05-422b-b0ec-935e422f8afa
+REPORT RequestId: c6933168-3c05-422b-b0ec-935e422f8afa	Duration: 1.41 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: ccfdbf34-593e-4e2c-a716-4a72de0bb702 Version: $LATEST
-END RequestId: 92711f43-e6b1-43be-bf50-4afd21d6bf9d
-REPORT RequestId: 92711f43-e6b1-43be-bf50-4afd21d6bf9d	Duration: 1.93 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 27482e03-8da7-471c-a575-fd2aa05ca899 Version: $LATEST
+Payload for JWT: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': datetime.datetime(2024, 11, 23, 18, 12, 45, 405861)}
+END RequestId: 6f555b77-268c-4a79-baac-26f7be2d86ba
+REPORT RequestId: 6f555b77-268c-4a79-baac-26f7be2d86ba	Duration: 80.81 ms	Billed Duration: 81 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: dfa1fa37-8d28-472c-94e7-4395092c560a Version: $LATEST
-Payload for JWT: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': datetime.datetime(2024, 11, 23, 16, 46, 14, 798745)}
-END RequestId: 3b28ac07-9e9b-4d18-9cd8-19f1b35858e7
-REPORT RequestId: 3b28ac07-9e9b-4d18-9cd8-19f1b35858e7	Duration: 98.88 ms	Billed Duration: 99 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: c03e1783-14c0-4e4a-907b-e5dd97a6282f Version: $LATEST
+END RequestId: 7603cdcf-d799-496e-b5a7-425e27090706
+REPORT RequestId: 7603cdcf-d799-496e-b5a7-425e27090706	Duration: 1.39 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 73db21be-6c2b-4d86-8e30-3d90f658b040 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380374}
-END RequestId: 76c0aaf6-effd-4ad2-9bd2-1615dd8677a8
-REPORT RequestId: 76c0aaf6-effd-4ad2-9bd2-1615dd8677a8	Duration: 12.39 ms	Billed Duration: 13 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e7c3af22-501d-4916-94ec-c79628d6acff Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: 253e922d-8798-4260-8506-08f0069eaf22
+REPORT RequestId: 253e922d-8798-4260-8506-08f0069eaf22	Duration: 6.57 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: d6b948be-4449-4a01-abc6-f952c1c75490 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379462}
-END RequestId: 042c4798-e0f8-4e4f-9e81-11050ff22bbb
-REPORT RequestId: 042c4798-e0f8-4e4f-9e81-11050ff22bbb	Duration: 97.11 ms	Billed Duration: 98 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 1eaa6851-7f13-453e-bbc2-b352e80e077c Version: $LATEST
+END RequestId: 135a6770-7d98-468a-ba5b-5423b4d8095a
+REPORT RequestId: 135a6770-7d98-468a-ba5b-5423b4d8095a	Duration: 1.58 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: a2364574-288f-4c78-8739-5dab1a57a404 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380374}
-END RequestId: 8170eec4-0cde-488f-ad2a-fd59bd641318
-REPORT RequestId: 8170eec4-0cde-488f-ad2a-fd59bd641318	Duration: 6.05 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 032b4591-037d-4b70-9616-73098ba53f3b Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: 0fa3d77b-a3b6-436c-bc36-0c9ca2f8489f
+REPORT RequestId: 0fa3d77b-a3b6-436c-bc36-0c9ca2f8489f	Duration: 6.25 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 66045b4c-827b-4207-b2ea-61aa12d740a8 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732379462}
-END RequestId: 6fcee5a4-090d-4a2b-b32e-63537bf6c8df
-REPORT RequestId: 6fcee5a4-090d-4a2b-b32e-63537bf6c8df	Duration: 90.63 ms	Billed Duration: 91 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 687853f3-a234-4588-886e-5ac1b8b8450d Version: $LATEST
+END RequestId: 75aa32cd-2866-4088-b7f9-55e8cdfc0012
+REPORT RequestId: 75aa32cd-2866-4088-b7f9-55e8cdfc0012	Duration: 1.58 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 4cb84a66-95f3-4926-bc09-1a8afd6e96db Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380374}
-END RequestId: 5444b5fe-8656-45b6-80bc-049c5b48bc9e
-REPORT RequestId: 5444b5fe-8656-45b6-80bc-049c5b48bc9e	Duration: 5.18 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 2a7c90cc-51c6-4e08-a25d-f39fe6430721 Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: dd684534-98e6-4bcb-ad71-0b6e5f0178d2
+REPORT RequestId: dd684534-98e6-4bcb-ad71-0b6e5f0178d2	Duration: 7.85 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: d4fff6e3-2d4b-4936-8801-e7b2fad817c0 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380374}
-END RequestId: f7f1f61f-6858-47d8-97e3-bfbf171ff5ba
-REPORT RequestId: f7f1f61f-6858-47d8-97e3-bfbf171ff5ba	Duration: 8.26 ms	Billed Duration: 9 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 240d98e0-47f4-4989-9c30-67af2003c01b Version: $LATEST
+END RequestId: ece4fc89-3d2f-40e0-a331-a72939c70658
+REPORT RequestId: ece4fc89-3d2f-40e0-a331-a72939c70658	Duration: 1.54 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: f95f5dbc-1a73-4e25-b8e8-f26e1aee029f Version: $LATEST
-END RequestId: de59e2f7-036c-4400-9c59-bd1a2c3c95d3
-REPORT RequestId: de59e2f7-036c-4400-9c59-bd1a2c3c95d3	Duration: 1.84 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 81dbca6a-eb03-4405-a5bf-f34e8f935545 Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: 4a9cd957-c67d-41c9-b26e-cd6eb0f869c4
+REPORT RequestId: 4a9cd957-c67d-41c9-b26e-cd6eb0f869c4	Duration: 6.86 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: 4c1545e9-6628-4e7f-84ab-351c5fd7b8ed Version: $LATEST
-END RequestId: c80f1f81-a8c5-40e8-8607-793081bddbdc
-REPORT RequestId: c80f1f81-a8c5-40e8-8607-793081bddbdc	Duration: 2.19 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 87e44666-6c1f-496f-8483-90404063458a Version: $LATEST
+END RequestId: d950ab9b-284f-4a33-8262-963f5e5a7326
+REPORT RequestId: d950ab9b-284f-4a33-8262-963f5e5a7326	Duration: 1.97 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: f96a53a9-fa94-4843-83ae-518c1cfee875 Version: $LATEST
-Payload for JWT: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': datetime.datetime(2024, 11, 23, 16, 54, 10, 665457)}
-END RequestId: a0345096-0ee8-499f-88e2-250eb8a82b1d
-REPORT RequestId: a0345096-0ee8-499f-88e2-250eb8a82b1d	Duration: 89.17 ms	Billed Duration: 90 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 20d655a8-237a-49a2-9610-8fac094860fd Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: 19637e4e-84b3-4301-9518-df3c766b47c9
+REPORT RequestId: 19637e4e-84b3-4301-9518-df3c766b47c9	Duration: 6.69 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: be267c3f-1403-44a2-b973-0e6a6904c895 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380850}
-END RequestId: 8563a439-7fc7-41d1-9d40-99ff23338042
-REPORT RequestId: 8563a439-7fc7-41d1-9d40-99ff23338042	Duration: 98.29 ms	Billed Duration: 99 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: d1577c41-54ea-4d6f-8453-85550a766727 Version: $LATEST
+END RequestId: 003b4233-5c65-446c-a5fb-fae957a3528a
+REPORT RequestId: 003b4233-5c65-446c-a5fb-fae957a3528a	Duration: 1.57 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 
-START RequestId: d3675872-2ce6-4993-ad19-4d9d39906c42 Version: $LATEST
-Decoded token: {'user_id': 5, 'username': 'prueba', 'role': 1, 'exp': 1732380374}
-END RequestId: c1ddafb7-88fc-4473-84eb-266c5c832146
-REPORT RequestId: c1ddafb7-88fc-4473-84eb-266c5c832146	Duration: 8.08 ms	Billed Duration: 9 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: d5197483-a7b5-4b1a-a8bf-ca420bebc3e2 Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: b00d4865-7819-4fa9-b560-5350a55e7e87
+REPORT RequestId: b00d4865-7819-4fa9-b560-5350a55e7e87	Duration: 6.88 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: 97349f38-6545-41d2-8b07-31e95bbb23ec Version: $LATEST
+END RequestId: b4ad3d53-0bee-40a3-a35e-fd9ccba24645
+REPORT RequestId: b4ad3d53-0bee-40a3-a35e-fd9ccba24645	Duration: 1.67 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: 30df4ae1-86d5-4f60-8ee2-9397c4645360 Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: 4b394191-2d7d-4630-ba43-65b6b713a7c3
+REPORT RequestId: 4b394191-2d7d-4630-ba43-65b6b713a7c3	Duration: 7.80 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: bb08c4bc-31cd-477a-8784-ea04f2b0019f Version: $LATEST
+END RequestId: dc30a7c6-bc6c-4435-86d8-9cf7dad0c4b0
+REPORT RequestId: dc30a7c6-bc6c-4435-86d8-9cf7dad0c4b0	Duration: 1.62 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: 6c27dfb1-3917-4cf2-a0b3-5a18b4345dd7 Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: 070f9dcf-5676-4f01-9719-6fec5ab5a8e0
+REPORT RequestId: 070f9dcf-5676-4f01-9719-6fec5ab5a8e0	Duration: 6.79 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: f25b2e49-996a-4fe7-90f6-6025de36a48f Version: $LATEST
+END RequestId: f58b93c5-10da-4bee-aaee-00392d923381
+REPORT RequestId: f58b93c5-10da-4bee-aaee-00392d923381	Duration: 1.51 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: cc9c5a35-2b6b-4c42-a667-41cf77143ce0 Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: 02d28abb-7fcd-46b3-aa42-2f98ded0b018
+REPORT RequestId: 02d28abb-7fcd-46b3-aa42-2f98ded0b018	Duration: 7.09 ms	Billed Duration: 8 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: cac52247-5100-4d7d-baf1-92c6ce790f57 Version: $LATEST
+END RequestId: d38f9553-99f4-46da-b911-b6a5aaf0a185
+REPORT RequestId: d38f9553-99f4-46da-b911-b6a5aaf0a185	Duration: 2.17 ms	Billed Duration: 3 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: 03f5bb20-d3e1-4ddf-904f-ac0d99f598d8 Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: eb8961d0-d297-41ae-a1d7-4edcdb5d7ed0
+REPORT RequestId: eb8961d0-d297-41ae-a1d7-4edcdb5d7ed0	Duration: 5.32 ms	Billed Duration: 6 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: 8f5f0ebc-993e-4eb0-9069-32bea87e694d Version: $LATEST
+END RequestId: a174c806-2740-44f1-9488-731a0c6199ec
+REPORT RequestId: a174c806-2740-44f1-9488-731a0c6199ec	Duration: 1.64 ms	Billed Duration: 2 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+
+START RequestId: d66df8ba-c347-489e-bd3b-4236e062272d Version: $LATEST
+Decoded token: {'user_id': 4, 'username': 'profesor', 'role': 2, 'exp': 1732385565}
+END RequestId: baba208d-4d8a-41b3-9a57-b978c93ffb12
+REPORT RequestId: baba208d-4d8a-41b3-9a57-b978c93ffb12	Duration: 6.55 ms	Billed Duration: 7 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
 

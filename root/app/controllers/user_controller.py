@@ -94,7 +94,7 @@ def create_user(user_service: UserService):
 
 @user_bp.route('/users/<int:user_id>', methods=['GET'])
 @jwt_required
-@requires_permission('view_users')
+@requires_permission('view_user')
 @inject
 def get_user_by_id(user_id, user_service: UserService):
     """
@@ -121,7 +121,7 @@ def get_user_by_id(user_id, user_service: UserService):
 
 @user_bp.route('/users', methods=['GET'])
 @jwt_required
-@requires_permission('views_users') 
+@requires_permission('view_users') 
 @inject
 def get_users(user_service: UserService):
     """
