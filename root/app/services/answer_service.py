@@ -3,15 +3,20 @@ from flask_injector import inject
 from werkzeug.exceptions import InternalServerError, NotFound
 from app.repositories.answer_repository import AnswerRepository
 from app.services.usage_log_service import UsageLogService
+from app.services.feedback_service import FeedbackService
+from app.services.question_service import QuestionService
+from utils.bedrock_agent import BedrockService
 
 logger = logging.getLogger(__name__)
 
 class AnswerService:
 
     @inject
-    def __init__(self, answer_repository: AnswerRepository, usage_log_service: UsageLogService):
+    def __init__(self, answer_repository: AnswerRepository, usage_log_service: UsageLogService, feedback_service: FeedbackService, question_service: QuestionService):
         self.answer_repository = answer_repository
         self.usage_log_service = usage_log_service
+        self.feedback_service = feedback_service
+        self.question_service = question_service
 
     def create_answers(self, answers_data):
         try:
@@ -33,6 +38,19 @@ class AnswerService:
                     action=f"Created answer for evaluation {answer_data.get('id_evaluation')}",
                     performed_by=answer_data.get('id_user')
                 )
+
+            string_data = ""
+
+            for answer in new_answer:
+                question = self.question_service.get_question_by_id(answer['id_question']).name
+                string_data += f"Descripción: {answer['answer_description']}, Puntaje: {answer['score']}, Pregunta: {question}"
+
+            prompt = f"Generate feedback de las respuesta de lsa preguntas de la encuenta de competencia del siguiente alumno. {string_data}"
+
+            text = BedrockService.generate_text(prompt=prompt)
+
+            self.feedback_service.create_feedback(new_answer[0]['id_evaluation'],new_answer[0]['id_user'],text)
+
 
             return new_answers
         except Exception as e:
