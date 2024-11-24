@@ -123,6 +123,7 @@ Resources:
   RDSInstance:
     Type: AWS::RDS::DBInstance
     Properties:
+      PubliclyAccessible: true
       DBInstanceClass: db.t3.micro
       AllocatedStorage: "20"
       Engine: postgres
