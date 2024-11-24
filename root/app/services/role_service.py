@@ -27,6 +27,39 @@ class RoleService:
         except Exception as e:
             logger.error(f"Error creating role: {e}")
             raise InternalServerError("An internal error occurred while creating the role.")
+    
+    def assign_permissions_to_role(self, role_id, permission_ids, id_user=None):
+        """
+        Asigna permisos a un rol.
+
+        Parameters:
+            role_id (int): ID del rol al que se le asignarán permisos.
+            permission_ids (list[int]): Lista de IDs de permisos a asignar.
+            id_user (int, optional): ID del usuario que realiza la acción.
+
+        Returns:
+            Role: El rol con los permisos actualizados.
+        """
+        try:
+            logger.info(f"Assigning permissions {permission_ids} to role ID: {role_id}")
+            updated_role = self.role_repository.assign_permissions_to_role(role_id, permission_ids)
+
+            if not updated_role:
+                raise NotFound(f"Role with ID {role_id} not found.")
+
+            self.usage_log_service.create_usage_log(
+                action=f"Assigned permissions {permission_ids} to role ID {role_id}",
+                performed_by=id_user
+            )
+
+            return updated_role
+        except NotFound as e:
+            logger.warning(f"Role not found: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Error assigning permissions to role ID {role_id}: {e}")
+            raise InternalServerError("An internal error occurred while assigning permissions to the role.")
+
 
     def get_role_by_id(self, role_id, id_user=None):
         try:

@@ -17,10 +17,13 @@ def jwt_required(func):
 
             decoded_token = jwt.decode(token, Config.SECRET_KEY, algorithms=["HS256"])
             g.current_user = decoded_token  # Guarda los datos del token en 'g' para acceso global
+            print(f"Decoded token: {decoded_token}")  # Log para verificar contenido del token
         except jwt.ExpiredSignatureError:
             return jsonify({"msg": "Token has expired"}), 401
         except jwt.InvalidTokenError:
             return jsonify({"msg": "Invalid token"}), 401
+
+        
 
         return func(*args, **kwargs)
     return decorated_function

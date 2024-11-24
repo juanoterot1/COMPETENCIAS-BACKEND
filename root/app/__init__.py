@@ -15,6 +15,8 @@ from app.controllers.question_controller import question_bp
 from app.controllers.answer_controller import answer_bp
 from app.controllers.grading_matrix_controller import grading_matrix_bp
 from app.controllers.role_controller import role_bp 
+from app.controllers.permission_controller import permission_bp
+from app.controllers.feedback_controller import feedback_bp
 
 
 from app.services.tenants_service import TenantService
@@ -26,6 +28,9 @@ from app.services.question_service import QuestionService
 from app.services.answer_service import AnswerService
 from app.services.grading_matrix_service import GradingMatrixService
 from app.services.role_service import RoleService
+from app.services.permission_service import PermissionService
+from app.services.feedback_service import FeedbackService
+
 
 def configure(binder):
     binder.bind(TenantService, to=TenantService, scope=singleton)
@@ -37,6 +42,9 @@ def configure(binder):
     binder.bind(AnswerService, to=AnswerService, scope=singleton)
     binder.bind(GradingMatrixService, to=GradingMatrixService, scope=singleton)
     binder.bind(RoleService, to=RoleService, scope=singleton)
+    binder.bind(PermissionService, to=PermissionService, scope=singleton)
+    binder.bind(FeedbackService, to=FeedbackService, scope=singleton)
+
 
 def create_app():
     app = Flask(__name__)
@@ -61,6 +69,9 @@ def create_app():
     app.register_blueprint(answer_bp, url_prefix='/api/v1')
     app.register_blueprint(grading_matrix_bp, url_prefix='/api/v1')
     app.register_blueprint(role_bp, url_prefix='/api/v1')
+    app.register_blueprint(permission_bp, url_prefix='/api/v1')
+    app.register_blueprint(feedback_bp, url_prefix='/api/v1')
+
 
 
     FlaskInjector(app=app, modules=[configure])

@@ -33,6 +33,45 @@ def create_role(role_service: RoleService):
         logger.error(f"Error creating role: {e}")
         return ApiResponse.internal_server_error()
 
+@role_bp.route('/roles/permissions/<int:role_id>', methods=['PUT'])
+@jwt_required
+@inject
+def assign_permissions_to_role(role_id, role_service: RoleService):
+    """
+    Asigna permisos a un rol.
+
+    Expected JSON body:
+        {
+            "permission_ids": [1, 2, 3]
+        }
+    """
+    try:
+        data = request.get_json()
+        if not data or 'permission_ids' not in data:
+            raise BadRequest("permission_ids must be provided")
+
+        updated_role = role_service.assign_permissions_to_role(
+            role_id=role_id,
+            permission_ids=data.get('permission_ids'),
+            id_user=data.get('id_user')
+        )
+
+        return ApiResponse.ok(
+            result=updated_role.as_dict(),
+            message="Permissions assigned to role successfully."
+        )
+
+    except BadRequest as e:
+        logger.error(f"Bad request: {e}")
+        return ApiResponse.bad_request(message=str(e))
+    except NotFound as e:
+        logger.warning(f"Role not found: {e}")
+        return ApiResponse.not_found(resource="Role", resource_id=role_id)
+    except Exception as e:
+        logger.error(f"Error assigning permissions to role ID {role_id}: {e}")
+        return ApiResponse.internal_server_error()
+
+
 @role_bp.route('/roles/<int:role_id>', methods=['GET'])
 @jwt_required
 @inject
