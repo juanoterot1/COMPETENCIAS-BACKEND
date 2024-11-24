@@ -5,7 +5,7 @@ from app.repositories.answer_repository import AnswerRepository
 from app.services.usage_log_service import UsageLogService
 from app.services.feedback_service import FeedbackService
 from app.services.question_service import QuestionService
-from utils.bedrock_agent import BedrockService
+from app.utils.bedrock_agent import BedrockService
 
 logger = logging.getLogger(__name__)
 
