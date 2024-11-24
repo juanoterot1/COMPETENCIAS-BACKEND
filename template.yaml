@@ -23,7 +23,7 @@ Resources:
       Timeout: 30
       Environment:
         Variables:
-          DATABASE_URL: "postgresql+psycopg2://competencias_admin:xyfbu8-maxmoj-xIrzyk@$host/competencias"
+          DATABASE_URL: !Sub "postgresql+psycopg2://competencias_admin:xyfbu8-maxmoj-xIrzyk@${RDSInstance.Endpoint.Address}/competencias"
       Events:
         Api:
           Type: Api
