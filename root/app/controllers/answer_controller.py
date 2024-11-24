@@ -15,27 +15,28 @@ answer_bp = Blueprint('answers', __name__)
 @jwt_required
 @requires_permission('create_answers') 
 @inject
-def create_answer(answer_service: AnswerService):
+def create_answers(answer_service: AnswerService):
     try:
         data = request.get_json()
-        if not data or 'answer_description' not in data or 'id_evaluation' not in data or 'id_question' not in data or 'id_user' not in data:
-            raise BadRequest("Answer description, id_evaluation, id_question and id_user must be provided")
+        if not data or not isinstance(data, list):
+            raise BadRequest("A list of answers must be provided.")
 
-        new_answer = answer_service.create_answer(
-            answer_description=data.get('answer_description'),
-            id_evaluation=data.get('id_evaluation'),
-            id_question=data.get('id_question'),
-            id_user=data.get('id_user'),
-            score=data.get('score')
-        )
+        # Validar cada objeto en la lista
+        for answer in data:
+            if not all(key in answer for key in ['answer_description', 'id_evaluation', 'id_question', 'id_user']):
+                raise BadRequest("Each answer must include 'answer_description', 'id_evaluation', 'id_question', and 'id_user'.")
 
-        return ApiResponse.created(result=new_answer.as_dict())
+        # Llamar al servicio para crear las respuestas
+        new_answers = answer_service.create_answers(data)
+
+        # Retornar la lista de respuestas creadas
+        return ApiResponse.created(result=[answer.as_dict() for answer in new_answers])
 
     except BadRequest as e:
         logger.error(f"Bad request: {e}")
         return ApiResponse.bad_request(message=str(e))
     except Exception as e:
-        logger.error(f"Error creating answer: {e}")
+        logger.error(f"Error creating answers: {e}")
         return ApiResponse.internal_server_error()
 
 @answer_bp.route('/answers/<int:answer_id>', methods=['GET'])

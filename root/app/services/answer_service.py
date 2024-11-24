@@ -13,26 +13,31 @@ class AnswerService:
         self.answer_repository = answer_repository
         self.usage_log_service = usage_log_service
 
-    def create_answer(self, answer_description, id_evaluation, id_question, id_user, score=None):
+    def create_answers(self, answers_data):
         try:
-            logger.info(f"Creating a new answer for evaluation {id_evaluation}")
-            new_answer = self.answer_repository.create_answer(
-                answer_description=answer_description,
-                id_evaluation=id_evaluation,
-                id_question=id_question,
-                id_user=id_user,
-                score=score
-            )
+            logger.info(f"Creating multiple answers. Total: {len(answers_data)}")
+            new_answers = []
 
-            self.usage_log_service.create_usage_log(
-                action=f"Created answer for evaluation {id_evaluation}",
-                performed_by=id_user  # Registrar el usuario que creó la respuesta
-            )
+            for answer_data in answers_data:
+                new_answer = self.answer_repository.create_answer(
+                    answer_description=answer_data.get('answer_description'),
+                    id_evaluation=answer_data.get('id_evaluation'),
+                    id_question=answer_data.get('id_question'),
+                    id_user=answer_data.get('id_user'),
+                    score=answer_data.get('score')
+                )
+                new_answers.append(new_answer)
 
-            return new_answer
+                # Registrar cada acción en el log de uso
+                self.usage_log_service.create_usage_log(
+                    action=f"Created answer for evaluation {answer_data.get('id_evaluation')}",
+                    performed_by=answer_data.get('id_user')
+                )
+
+            return new_answers
         except Exception as e:
-            logger.error(f"Error creating answer: {e}")
-            raise InternalServerError("An internal error occurred while creating the answer.")
+            logger.error(f"Error creating multiple answers: {e}")
+            raise InternalServerError("An internal error occurred while creating answers.")
 
     def get_answer_by_id(self, answer_id, id_user=None):
         try:
