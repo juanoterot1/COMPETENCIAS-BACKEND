@@ -1,0 +1,134 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+
+  # API Gateway
+  CompetenciasAPIGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: competencias-api
+      StageName: prod
+      Tags:
+        CostCenter: Competencias
+        Name: CompetenciasAPIGateway
+
+  # Lambda Backend
+  CompetenciasAPIBackend:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: wsgi.lambda_handler
+      Runtime: python3.11
+      CodeUri: root
+      Timeout: 30
+      Environment:
+        Variables:
+          DATABASE_URL: "postgresql+psycopg2://competencias_admin:xyfbu8-maxmoj-xIrzyk@$host/competencias"
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CompetenciasAPIGateway
+            Path: /{proxy+}
+            Method: ANY
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref LambdaSecurityGroup
+        SubnetIds:
+          - subnet-031e377b99961a9df
+          - subnet-047f25287f77bd853
+
+  # S3 Bucket for Frontend Hosting
+  S3AdminCompetenciasFrontend:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: competencias-frontend
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: ObjectWriter
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      VersioningConfiguration:
+        Status: Enabled
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref S3AdminCompetenciasFrontend
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub '${S3AdminCompetenciasFrontend.Arn}/*'
+
+  # CloudFront Distribution
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultCacheBehavior:
+          TargetOriginId: S3FrontEndCompetencias
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods:
+            - GET
+            - HEAD
+          CachedMethods:
+            - GET
+            - HEAD
+          ForwardedValues:
+            QueryString: false
+          Compress: true
+        Origins:
+          - Id: S3FrontEndCompetencias
+            DomainName: !Sub '${S3AdminCompetenciasFrontend}.s3-website-${AWS::Region}.amazonaws.com'
+            CustomOriginConfig:
+              HTTPPort: 80
+              HTTPSPort: 443
+              OriginProtocolPolicy: http-only
+        DefaultRootObject: index.html
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: true
+
+  # Security Group for Lambda
+  LambdaSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow Lambda access to PostgreSQL
+      VpcId: vpc-097de5b15de95d11b
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 5432
+          ToPort: 5432
+          CidrIp: 0.0.0.0/0 # Replace with a specific range for security
+
+  RDSSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnets for RDS instance
+      SubnetIds:
+        - subnet-031e377b99961a9df
+        - subnet-047f25287f77bd853
+
+  # RDS Instance
+  RDSInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: "20"
+      Engine: postgres
+      MasterUsername: competencias_admin
+      MasterUserPassword: xyfbu8-maxmoj-xIrzyk
+      DBName: competencias
+      VPCSecurityGroups:
+        - !Ref LambdaSecurityGroup
+      DBSubnetGroupName: !Ref RDSSubnetGroup
