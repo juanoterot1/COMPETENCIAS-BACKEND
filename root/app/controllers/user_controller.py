@@ -49,7 +49,7 @@ def login(user_service: UserService):
 
 @user_bp.route('/users', methods=['POST'])
 #@jwt_required
-@requires_permission('create_users') 
+#@requires_permission('create_users') 
 @inject
 def create_user(user_service: UserService):
     """
