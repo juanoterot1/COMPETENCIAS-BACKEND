@@ -1,11 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 
-Parameters:
-  MasterUserPassword:
-    Type: String
-    Description: The master password for the RDS instance
-
 Resources:
 
   # API Gateway
@@ -28,7 +23,7 @@ Resources:
       Timeout: 30
       Environment:
         Variables:
-          DATABASE_URL: !Sub "postgresql+psycopg2://competencias_admin:xyfbu8-maxmoj-xIrzyk@${RDSInstance.Endpoint.Address}/competencias"
+          DATABASE_URL: "postgresql+psycopg2://competencias_admin:xyfbu8-maxmoj-xIrzyk@$host/competencias"
       Events:
         Api:
           Type: Api
@@ -41,6 +36,7 @@ Resources:
           - !Ref LambdaSecurityGroup
         SubnetIds:
           - subnet-031e377b99961a9df
+          - subnet-047f25287f77bd853
 
   # S3 Bucket for Frontend Hosting
   S3AdminCompetenciasFrontend:
@@ -94,9 +90,11 @@ Resources:
           Compress: true
         Origins:
           - Id: S3FrontEndCompetencias
-            DomainName: !GetAtt S3AdminCompetenciasFrontend.WebsiteURL
+            DomainName: !Sub '${S3AdminCompetenciasFrontend}.s3-website-${AWS::Region}.amazonaws.com'
             CustomOriginConfig:
-              OriginProtocolPolicy: https-only
+              HTTPPort: 80
+              HTTPSPort: 443
+              OriginProtocolPolicy: http-only
         DefaultRootObject: index.html
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
@@ -113,6 +111,14 @@ Resources:
           ToPort: 5432
           CidrIp: 0.0.0.0/0 # Replace with a specific range for security
 
+  RDSSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnets for RDS instance
+      SubnetIds:
+        - subnet-031e377b99961a9df
+        - subnet-047f25287f77bd853
+
   # RDS Instance
   RDSInstance:
     Type: AWS::RDS::DBInstance
@@ -121,15 +127,8 @@ Resources:
       AllocatedStorage: "20"
       Engine: postgres
       MasterUsername: competencias_admin
-      MasterUserPassword: !Ref MasterUserPassword
+      MasterUserPassword: xyfbu8-maxmoj-xIrzyk
       DBName: competencias
       VPCSecurityGroups:
         - !Ref LambdaSecurityGroup
       DBSubnetGroupName: !Ref RDSSubnetGroup
-
-  RDSSubnetGroup:
-    Type: AWS::RDS::DBSubnetGroup
-    Properties:
-      DBSubnetGroupDescription: Subnets for RDS instance
-      SubnetIds:
-        - subnet-031e377b99961a9df
