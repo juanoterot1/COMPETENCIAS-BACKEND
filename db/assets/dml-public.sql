@@ -84,11 +84,248 @@ VALUES
     ('Question 1', 4.0, 2, NOW(), NOW());
 
 -- Insertando datos en la tabla answers
-INSERT INTO answers (answer_description, id_evaluation, id_question, id_user, score, created_at, updated_at)
-VALUES 
-    ('Answer to Question 1', 1, 1, 1, 4.5, NOW(), NOW()),
-    ('Answer to Question 2', 1, 2, 1, 3.0, NOW(), NOW()),
-    ('Answer to Question 1', 2, 3, 2, 3.8, NOW(), NOW());
+INSERT INTO public.answers (answer_description, id_evaluation, id_question, id_user, score, created_at, updated_at)
+VALUES
+-- Respuestas para la pregunta 1
+('Sí', 1, 1, NULL, NULL, NOW(), NOW()),
+('No', 1, 1, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 2
+('Sí', 1, 2, NULL, NULL, NOW(), NOW()),
+('No', 1, 2, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 3
+('Sí', 2, 3, NULL, NULL, NOW(), NOW()),
+('No', 2, 3, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 4
+('Sí', 2, 4, NULL, NULL, NOW(), NOW()),
+('No', 2, 4, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 5
+('Sí', 2, 5, NULL, NULL, NOW(), NOW()),
+('No', 2, 5, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 6
+('Sí', 2, 6, NULL, NULL, NOW(), NOW()),
+('No', 2, 6, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 7
+('Sí', 2, 7, NULL, NULL, NOW(), NOW()),
+('No', 2, 7, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 8
+('Sí', 2, 8, NULL, NULL, NOW(), NOW()),
+('No', 2, 8, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 9
+('Sí', 2, 9, NULL, NULL, NOW(), NOW()),
+('No', 2, 9, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 10
+('Sí', 2, 10, NULL, NULL, NOW(), NOW()),
+('No', 2, 10, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 11
+('Sí', 3, 11, NULL, NULL, NOW(), NOW()),
+('No', 3, 11, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 12
+('Sí', 3, 12, NULL, NULL, NOW(), NOW()),
+('No', 3, 12, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 13
+('Sí', 3, 13, NULL, NULL, NOW(), NOW()),
+('No', 3, 13, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 14
+('Sí', 3, 14, NULL, NULL, NOW(), NOW()),
+('No', 3, 14, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 15
+('Sí', 3, 15, NULL, NULL, NOW(), NOW()),
+('No', 3, 15, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 16
+('Sí', 3, 16, NULL, NULL, NOW(), NOW()),
+('No', 3, 16, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 17
+('Sí', 3, 17, NULL, NULL, NOW(), NOW()),
+('No', 3, 17, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 18
+('Sí', 4, 18, NULL, NULL, NOW(), NOW()),
+('No', 4, 18, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 19
+('Sí', 4, 19, NULL, NULL, NOW(), NOW()),
+('No', 4, 19, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 20
+('Sí', 4, 20, NULL, NULL, NOW(), NOW()),
+('No', 4, 20, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 21
+('Sí', 4, 21, NULL, NULL, NOW(), NOW()),
+('No', 4, 21, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 22
+('Sí', 4, 22, NULL, NULL, NOW(), NOW()),
+('No', 4, 22, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 23
+('Sí', 4, 23, NULL, NULL, NOW(), NOW()),
+('No', 4, 23, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 24
+('Sí', 4, 24, NULL, NULL, NOW(), NOW()),
+('No', 4, 24, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 25
+('Sí', 5, 25, NULL, NULL, NOW(), NOW()),
+('No', 5, 25, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 26
+('Sí', 5, 26, NULL, NULL, NOW(), NOW()),
+('No', 5, 26, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 27
+('Sí', 5, 27, NULL, NULL, NOW(), NOW()),
+('No', 5, 27, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 28
+('Sí', 5, 28, NULL, NULL, NOW(), NOW()),
+('No', 5, 28, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 29
+('Sí', 5, 29, NULL, NULL, NOW(), NOW()),
+('No', 5, 29, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 30
+('Sí', 5, 30, NULL, NULL, NOW(), NOW()),
+('No', 5, 30, NULL, NULL, NOW(), NOW()),
+-- Respuestas para la pregunta 31
+('Sí', 5, 31, NULL, NULL, NOW(), NOW()),
+('No', 5, 31, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 32
+('Sí', 6, 32, NULL, NULL, NOW(), NOW()),
+('No', 6, 32, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 33
+('Sí', 6, 33, NULL, NULL, NOW(), NOW()),
+('No', 6, 33, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 34
+('Sí', 6, 34, NULL, NULL, NOW(), NOW()),
+('No', 6, 34, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 35
+('Sí', 6, 35, NULL, NULL, NOW(), NOW()),
+('No', 6, 35, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 36
+('Sí', 6, 36, NULL, NULL, NOW(), NOW()),
+('No', 6, 36, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 37
+('Sí', 6, 37, NULL, NULL, NOW(), NOW()),
+('No', 6, 37, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 38
+('Sí', 6, 38, NULL, NULL, NOW(), NOW()),
+('No', 6, 38, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 39
+('Sí', 7, 39, NULL, NULL, NOW(), NOW()),
+('No', 7, 39, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 40
+('Sí', 7, 40, NULL, NULL, NOW(), NOW()),
+('No', 7, 40, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 41
+('Sí', 7, 41, NULL, NULL, NOW(), NOW()),
+('No', 7, 41, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 42
+('Sí', 7, 42, NULL, NULL, NOW(), NOW()),
+('No', 7, 42, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 43
+('Sí', 7, 43, NULL, NULL, NOW(), NOW()),
+('No', 7, 43, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 44
+('Sí', 7, 44, NULL, NULL, NOW(), NOW()),
+('No', 7, 44, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 45
+('Sí', 7, 45, NULL, NULL, NOW(), NOW()),
+('No', 7, 45, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 46
+('Sí', 8, 46, NULL, NULL, NOW(), NOW()),
+('No', 8, 46, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 47
+('Sí', 8, 47, NULL, NULL, NOW(), NOW()),
+('No', 8, 47, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 48
+('Sí', 8, 48, NULL, NULL, NOW(), NOW()),
+('No', 8, 48, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 49
+('Sí', 8, 49, NULL, NULL, NOW(), NOW()),
+('No', 8, 49, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 50
+('Sí', 8, 50, NULL, NULL, NOW(), NOW()),
+('No', 8, 50, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 51
+('Sí', 8, 51, NULL, NULL, NOW(), NOW()),
+('No', 8, 51, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 52
+('Sí', 8, 52, NULL, NULL, NOW(), NOW()),
+('No', 8, 52, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 53
+('Sí', 9, 53, NULL, NULL, NOW(), NOW()),
+('No', 9, 53, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 54
+('Sí', 9, 54, NULL, NULL, NOW(), NOW()),
+('No', 9, 54, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 55
+('Sí', 9, 55, NULL, NULL, NOW(), NOW()),
+('No', 9, 55, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 56
+('Sí', 9, 56, NULL, NULL, NOW(), NOW()),
+('No', 9, 56, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 57
+('Sí', 9, 57, NULL, NULL, NOW(), NOW()),
+('No', 9, 57, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 58
+('Sí', 9, 58, NULL, NULL, NOW(), NOW()),
+('No', 9, 58, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 59
+('Sí', 9, 59, NULL, NULL, NOW(), NOW()),
+('No', 9, 59, NULL, NULL, NOW(), NOW()),
+
+-- Respuestas para la pregunta 60
+('Sí', 10, 60, NULL, NULL, NOW(), NOW()),
+('No', 10, 60, NULL, NULL, NOW(), NOW());
+
+
 
 -- Insertando datos en la tabla grading_matrix
 INSERT INTO grading_matrix (id_subject, total_evaluations, total_score, recommendation, score, document, created_at, updated_at)
