@@ -21,8 +21,9 @@ def create_answers(answer_service: AnswerService):
         if not data or not isinstance(data, list):
             raise BadRequest("A list of answers must be provided.")
 
-        # Validar cada objeto en la lista
+        # Asegurar que cada objeto tenga 'id_user' asignado a 1
         for answer in data:
+            answer['id_user'] = 1  # Asignar siempre id_user = 1
             if not all(key in answer for key in ['answer_description', 'id_evaluation', 'id_question', 'id_user']):
                 raise BadRequest("Each answer must include 'answer_description', 'id_evaluation', 'id_question', and 'id_user'.")
 
@@ -38,6 +39,7 @@ def create_answers(answer_service: AnswerService):
     except Exception as e:
         logger.error(f"Error creating answers: {e}")
         return ApiResponse.internal_server_error()
+
 
 @answer_bp.route('/answers/<int:answer_id>', methods=['GET'])
 @jwt_required
