@@ -3,7 +3,6 @@ from flask_injector import inject
 from werkzeug.exceptions import InternalServerError, NotFound
 from app.repositories.answer_repository import AnswerRepository
 from app.services.usage_log_service import UsageLogService
-from app.services.feedback_service import FeedbackService
 from app.services.question_service import QuestionService
 from app.utils.sqs_utils import SQSUtils
 
@@ -12,10 +11,9 @@ logger = logging.getLogger(__name__)
 class AnswerService:
 
     @inject
-    def __init__(self, answer_repository: AnswerRepository, usage_log_service: UsageLogService, feedback_service: FeedbackService, question_service: QuestionService):
+    def __init__(self, answer_repository: AnswerRepository, usage_log_service: UsageLogService, question_service: QuestionService):
         self.answer_repository = answer_repository
         self.usage_log_service = usage_log_service
-        self.feedback_service = feedback_service
         self.question_service = question_service
 
     def create_answers(self, answers_data):
@@ -39,12 +37,16 @@ class AnswerService:
                     performed_by=answer_data.get('id_user')
                 )
 
+            print(new_answers)
+
             string_data = ""
 
             # Preparar datos para el mensaje SQS
             for answer in new_answers:
                 question = self.question_service.get_question_by_id(answer.id_question).name
                 string_data += f"Descripción: {answer.answer_description}, Puntaje: {answer.score}, Pregunta: {question}\n"
+
+            print(string_data)
 
             # Generar el prompt para feedback
             prompt = f"Generate feedback for the following responses: {string_data}"
