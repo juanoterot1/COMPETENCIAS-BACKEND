@@ -7,4 +7,5 @@ MarkupSafe
 boto3
 Flask-CORS
 Flask-Injector
+psycopg2-binary
 PyJWT
