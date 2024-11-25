@@ -5,12 +5,48 @@ VALUES
     ('Teacher', NOW(), NOW()),
     ('Student', NOW(), NOW());
 
-INSERT INTO permissions (name, description, created_at, updated_at) VALUES
-    ('create_faculties', 'Permission to create faculties',NOW(), NOW()),
-    ('view_faculty', 'Permission to view a specific faculty',NOW(), NOW()),
-    ('view_faculties', 'Permission to view the list of faculties',NOW(), NOW()),
-    ('update_faculties', 'Permission to update faculties',NOW(), NOW()),
-    ('delete_faculties', 'Permission to delete faculties',NOW(), NOW());
+INSERT INTO permissions (id, name, description, created_at, updated_at) VALUES
+    (1, 'create_faculties', 'Permission to create faculties', '2024-11-23 11:06:51.371', '2024-11-23 11:06:51.371'),
+    (2, 'view_faculty', 'Permission to view a specific faculty', '2024-11-23 11:06:51.371', '2024-11-23 11:06:51.371'),
+    (3, 'view_faculties', 'Permission to view the list of faculties', '2024-11-23 11:06:51.371', '2024-11-23 11:06:51.371'),
+    (4, 'update_faculties', 'Permission to update faculties', '2024-11-23 11:06:51.371', '2024-11-23 11:06:51.371'),
+    (5, 'delete_faculties', 'Permission to delete faculties', '2024-11-23 11:06:51.371', '2024-11-23 11:06:51.371'),
+    (6, 'create_answers', 'Permission to create answers', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (7, 'view_answer', 'Permission to view a specific answer', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (8, 'view_answers', 'Permission to view the list of answers', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (9, 'update_answers', 'Permission to update answers', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (10, 'delete_answers', 'Permission to delete answers', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (11, 'create_evaluations', 'Permission to create evaluations', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (12, 'view_evaluation', 'Permission to view a specific evaluation', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (13, 'view_evaluations', 'Permission to view the list of evaluations', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (14, 'update_evaluations', 'Permission to update evaluations', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (15, 'delete_evaluations', 'Permission to delete evaluations', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (16, 'create_grading_matrix', 'Permission to create grading matrices', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (17, 'view_grading_matrix', 'Permission to view a specific grading matrix', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (18, 'view_grading_matrices', 'Permission to view the list of grading matrices', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (19, 'update_grading_matrix', 'Permission to update grading matrices', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (20, 'delete_grading_matrix', 'Permission to delete grading matrices', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (21, 'create_questions', 'Permission to create questions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (22, 'view_question', 'Permission to view a specific question', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (23, 'view_questions', 'Permission to view the list of questions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (24, 'update_questions', 'Permission to update questions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (25, 'delete_questions', 'Permission to delete questions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (26, 'create_role_permissions', 'Permission to create role permissions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (27, 'view_role_permission', 'Permission to view a specific role permission', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (28, 'view_role_permissions', 'Permission to view the list of role permissions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (29, 'update_role_permissions', 'Permission to update role permissions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (30, 'delete_role_permissions', 'Permission to delete role permissions', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (36, 'create_subjects', 'Permission to create subjects', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (37, 'view_subject', 'Permission to view a specific subject', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (38, 'view_subjects', 'Permission to view the list of subjects', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (39, 'update_subjects', 'Permission to update subjects', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (40, 'delete_subjects', 'Permission to delete subjects', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (41, 'create_users', 'Permission to create users', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (42, 'view_user', 'Permission to view a specific user', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (43, 'view_users', 'Permission to view the list of users', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (44, 'update_users', 'Permission to update users', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628'),
+    (45, 'delete_users', 'Permission to delete users', '2024-11-23 11:41:18.628', '2024-11-23 11:41:18.628');
+
 
 -- Insertando datos en la tabla users
 INSERT INTO users (username, password, full_name, phone, mail, role_id, dni, created_at, updated_at)
