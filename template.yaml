@@ -2,6 +2,19 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 
 Resources:
+  FeedbackInputQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: FeedbackInputQueue
+        VisibilityTimeout: 30
+        RedrivePolicy:
+          deadLetterTargetArn: !GetAtt FeedbackDLQ.Arn
+          maxReceiveCount: 3
+
+  FeedbackDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: FeedbackDLQ
 
   # API Gateway
   CompetenciasAPIGateway:
@@ -24,6 +37,7 @@ Resources:
       Environment:
         Variables:
           DATABASE_URL: !Sub "postgresql+psycopg2://competencias_admin:xyfbu8-maxmoj-xIrzyk@${RDSInstance.Endpoint.Address}/competencias"
+          SQS_QUEUE_URL: !Ref FeedbackInputQueue
       Events:
         Api:
           Type: Api
@@ -37,6 +51,23 @@ Resources:
         SubnetIds:
           - subnet-031e377b99961a9df
           - subnet-047f25287f77bd853
+
+  FeedbackWorkerLambda:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: bedrock_feedback.lambda_handler
+        Runtime: python3.11
+        CodeUri: workers/bedrock-feedback
+        Timeout: 900
+        Environment:
+          Variables:
+            API_URL: "https://gopr7g37j3.execute-api.us-east-1.amazonaws.com/prod/api/v1/feedback"
+            SQS_QUEUE_URL: !Ref FeedbackInputQueue
+        Events:
+          SQS:
+            Type: SQS
+            Properties:
+              Queue: !GetAtt FeedbackInputQueue.Arn
 
   # S3 Bucket for Frontend Hosting
   S3AdminCompetenciasFrontend:

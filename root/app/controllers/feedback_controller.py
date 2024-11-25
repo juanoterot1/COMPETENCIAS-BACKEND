@@ -12,9 +12,6 @@ logger = logging.getLogger(__name__)
 feedback_bp = Blueprint('feedback', __name__)
 
 @feedback_bp.route('/feedback', methods=['POST'])
-@jwt_required
-# @requires_permission('create_feedback')
-@inject
 def create_feedback(feedback_service: FeedbackService):
     """
     Endpoint para crear un nuevo feedback.

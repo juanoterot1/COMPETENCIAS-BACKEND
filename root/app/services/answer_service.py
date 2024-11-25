@@ -5,7 +5,7 @@ from app.repositories.answer_repository import AnswerRepository
 from app.services.usage_log_service import UsageLogService
 from app.services.feedback_service import FeedbackService
 from app.services.question_service import QuestionService
-from app.utils.bedrock_agent import BedrockService
+from app.utils.sqs_utils import SQSUtils
 
 logger = logging.getLogger(__name__)
 
@@ -41,17 +41,27 @@ class AnswerService:
 
             string_data = ""
 
-            for answer in new_answer:
-                question = self.question_service.get_question_by_id(answer['id_question']).name
-                string_data += f"Descripción: {answer['answer_description']}, Puntaje: {answer['score']}, Pregunta: {question}"
+            # Preparar datos para el mensaje SQS
+            for answer in new_answers:
+                question = self.question_service.get_question_by_id(answer.id_question).name
+                string_data += f"Descripción: {answer.answer_description}, Puntaje: {answer.score}, Pregunta: {question}\n"
 
-            prompt = f"Generate feedback de las respuesta de lsa preguntas de la encuenta de competencia del siguiente alumno. {string_data}"
+            # Generar el prompt para feedback
+            prompt = f"Generate feedback for the following responses: {string_data}"
 
-            text = BedrockService.generate_text(prompt=prompt)
+            # Construir mensaje para SQS
+            message_body = {
+                "id_evaluation": new_answers[0].id_evaluation,
+                "id_user": new_answers[0].id_user,
+                "prompt_string": prompt,
+                "performed_by": "system",  # Opcional, cambiar según lógica
+            }
 
-            self.feedback_service.create_feedback(new_answer[0]['id_evaluation'],new_answer[0]['id_user'],text)
+            # Enviar mensaje a SQS
+            logger.info("Sending message to SQS.")
+            SQSUtils.send_message(message_body)
 
-
+            logger.info("Answers created and message sent to SQS.")
             return new_answers
         except Exception as e:
             logger.error(f"Error creating multiple answers: {e}")
@@ -91,7 +101,6 @@ class AnswerService:
         except Exception as e:
             logger.error(f"Error fetching paginated answers: {e}")
             raise InternalServerError("An internal error occurred while fetching paginated answers.")
-
 
     def update_answer(self, answer_id, answer_description=None, score=None, id_user=None):
         try:
