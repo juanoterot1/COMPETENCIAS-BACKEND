@@ -6,7 +6,7 @@ Resources:
       Type: AWS::SQS::Queue
       Properties:
         QueueName: FeedbackInputQueue
-        VisibilityTimeout: 30
+        VisibilityTimeout: 900
         RedrivePolicy:
           deadLetterTargetArn: !GetAtt FeedbackDLQ.Arn
           maxReceiveCount: 3
