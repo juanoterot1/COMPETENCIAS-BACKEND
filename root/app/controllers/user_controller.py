@@ -49,7 +49,7 @@ def login(user_service: UserService):
 
 @user_bp.route('/users', methods=['POST'])
 #@jwt_required
-@requires_permission('create_users') 
+#@requires_permission('create_users') 
 @inject
 def create_user(user_service: UserService):
     """
@@ -94,7 +94,7 @@ def create_user(user_service: UserService):
 
 @user_bp.route('/users/<int:user_id>', methods=['GET'])
 @jwt_required
-@requires_permission('view_user')
+#@requires_permission('view_user')
 @inject
 def get_user_by_id(user_id, user_service: UserService):
     """
@@ -121,7 +121,7 @@ def get_user_by_id(user_id, user_service: UserService):
 
 @user_bp.route('/users', methods=['GET'])
 @jwt_required
-@requires_permission('view_users') 
+#@requires_permission('view_users') 
 @inject
 def get_users(user_service: UserService):
     """
@@ -174,7 +174,7 @@ def get_users(user_service: UserService):
 
 @user_bp.route('/users/<int:user_id>', methods=['PUT'])
 @jwt_required
-@requires_permission('update_users') 
+#@requires_permission('update_users') 
 @inject
 def update_user(user_id, user_service: UserService):
     """
@@ -226,7 +226,7 @@ def update_user(user_id, user_service: UserService):
 
 @user_bp.route('/users/<int:user_id>', methods=['DELETE'])
 @jwt_required
-@requires_permission('delete_users') 
+#@requires_permission('delete_users') 
 @inject
 def delete_user(user_id, user_service: UserService):
     """
