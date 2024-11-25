@@ -22,11 +22,14 @@ class AnswerService:
             new_answers = []
 
             for answer_data in answers_data:
+                # Asegurar que cada respuesta tenga id_user = 1
+                answer_data['id_user'] = answer_data.get('id_user', 1)
+
                 new_answer = self.answer_repository.create_answer(
                     answer_description=answer_data.get('answer_description'),
                     id_evaluation=answer_data.get('id_evaluation'),
                     id_question=answer_data.get('id_question'),
-                    id_user=answer_data.get('id_user'),
+                    id_user=answer_data['id_user'],  # Siempre tendrá un valor
                     score=answer_data.get('score')
                 )
                 new_answers.append(new_answer)
@@ -34,19 +37,14 @@ class AnswerService:
                 # Registrar cada acción en el log de uso
                 self.usage_log_service.create_usage_log(
                     action=f"Created answer for evaluation {answer_data.get('id_evaluation')}",
-                    performed_by=answer_data.get('id_user')
+                    performed_by=answer_data['id_user']
                 )
 
-            print(new_answers)
-
-            string_data = ""
-
             # Preparar datos para el mensaje SQS
+            string_data = ""
             for answer in new_answers:
                 question = self.question_service.get_question_by_id(answer.id_question).name
                 string_data += f"Descripción: {answer.answer_description}, Puntaje: {answer.score}, Pregunta: {question}\n"
-
-            print(string_data)
 
             # Generar el prompt para feedback
             prompt = f"Generate feedback for the following responses: {string_data}"
@@ -68,6 +66,7 @@ class AnswerService:
         except Exception as e:
             logger.error(f"Error creating multiple answers: {e}")
             raise InternalServerError("An internal error occurred while creating answers.")
+
 
     def get_answer_by_id(self, answer_id, id_user=None):
         try:
