@@ -13,7 +13,7 @@ evaluation_bp = Blueprint('evaluations', __name__)
 
 @evaluation_bp.route('/evaluations', methods=['POST'])
 @jwt_required
-#@requires_permission('create_evaluations')
+@requires_permission('create_evaluations')
 @inject
 def create_evaluation(evaluation_service: EvaluationService):
     try:
@@ -43,7 +43,7 @@ def create_evaluation(evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['GET'])
 @jwt_required
-#@requires_permission('view_evaluation')
+@requires_permission('view_evaluation')
 @inject
 def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -64,7 +64,7 @@ def get_evaluation_by_id(evaluation_id, evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations', methods=['GET'])
 @jwt_required
-#@requires_permission('view_evaluations')
+@requires_permission('view_evaluations')
 @inject
 def get_evaluations(evaluation_service: EvaluationService):
     try:
@@ -98,7 +98,7 @@ def get_evaluations(evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['PUT'])
 @jwt_required
-#@requires_permission('update_evaluations')
+@requires_permission('update_evaluations')
 @inject
 def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -132,7 +132,7 @@ def update_evaluation(evaluation_id, evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations/<int:evaluation_id>', methods=['DELETE'])
 @jwt_required
-#@requires_permission('delete_evaluations')
+@requires_permission('delete_evaluations')
 @inject
 def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
     try:
@@ -154,7 +154,7 @@ def delete_evaluation(evaluation_id, evaluation_service: EvaluationService):
 
 @evaluation_bp.route('/evaluations/count', methods=['GET'])
 @jwt_required
-#@requires_permission('view_evaluations')
+@requires_permission('view_evaluations')
 @inject
 def count_evaluations(evaluation_service: EvaluationService):
     try:

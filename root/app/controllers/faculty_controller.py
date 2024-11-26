@@ -13,7 +13,7 @@ faculty_bp = Blueprint('faculties', __name__)
 
 @faculty_bp.route('/faculties', methods=['POST'])
 @jwt_required
-#@requires_permission('create_faculties') 
+@requires_permission('create_faculties') 
 @inject
 def create_faculty(faculty_service: FacultyService):
     try:
@@ -37,7 +37,7 @@ def create_faculty(faculty_service: FacultyService):
 
 @faculty_bp.route('/faculties/<int:faculty_id>', methods=['GET'])
 @jwt_required
-#@requires_permission('view_faculty')
+@requires_permission('view_faculty')
 @inject
 def get_faculty_by_id(faculty_id, faculty_service: FacultyService):
     try:
@@ -58,7 +58,7 @@ def get_faculty_by_id(faculty_id, faculty_service: FacultyService):
 
 @faculty_bp.route('/faculties', methods=['GET'])
 @jwt_required
-#@requires_permission('view_faculties')
+@requires_permission('view_faculties')
 @inject
 def get_faculties(faculty_service: FacultyService):
     try:
@@ -91,7 +91,7 @@ def get_faculties(faculty_service: FacultyService):
 
 @faculty_bp.route('/faculties/<int:faculty_id>', methods=['PUT'])
 @jwt_required
-#@requires_permission('update_faculties') 
+@requires_permission('update_faculties') 
 @inject
 def update_faculty(faculty_id, faculty_service: FacultyService):
     try:
@@ -122,7 +122,7 @@ def update_faculty(faculty_id, faculty_service: FacultyService):
 
 @faculty_bp.route('/faculties/<int:faculty_id>', methods=['DELETE'])
 @jwt_required
-#@requires_permission('delete_faculties') 
+@requires_permission('delete_faculties') 
 @inject
 def delete_faculty(faculty_id, faculty_service: FacultyService):
     try:
